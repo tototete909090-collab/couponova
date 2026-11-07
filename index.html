@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10131d">
+  <meta name="description" content="Discover shopping deals, store offers and verified discount coupons from popular stores around the world with Couponova.">
+  <meta name="keywords" content="discount codes, coupons, promo codes, shopping deals, Couponova">
+  <meta property="og:title" content="Couponova | Smart Shopping Starts Here">
+  <meta property="og:description" content="Find better deals. Shop smarter. Save more.">
+  <meta property="og:type" content="website">
+  <title>Couponova — Smart Shopping Starts Here</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='25' fill='%237c5cff'/%3E%3Ctext x='50' y='68' font-size='60' text-anchor='middle' fill='white' font-family='Arial'%3EC%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg:#0c0f18;
+      --panel:#141927;
+      --panel2:#1a2030;
+      --text:#f7f7fb;
+      --muted:#a4abc0;
+      --accent:#9a7cff;
+      --accent2:#6b4ce6;
+      --line:rgba(255,255,255,.09);
+      --green:#4ed6a0;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+      line-height:1.6;
+    }
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1160px,92%);margin:auto}
+    .topbar{
+      border-bottom:1px solid var(--line);
+      background:rgba(12,15,24,.94);
+      position:sticky;top:0;z-index:20;
+      backdrop-filter:blur(14px);
+    }
+    .nav{
+      min-height:76px;display:flex;align-items:center;
+      justify-content:space-between;gap:20px;
+    }
+    .brand{display:flex;align-items:center;gap:11px;font-size:25px;font-weight:850;letter-spacing:-1px}
+    .logo{
+      width:42px;height:42px;border-radius:13px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,#a68aff,#6948df);
+      color:white;font-size:25px;font-weight:900;
+      box-shadow:0 8px 28px rgba(124,92,255,.3);
+    }
+    .brand span:last-child{color:#c6b8ff}
+    .navlinks{display:flex;align-items:center;gap:25px;color:var(--muted);font-size:14px}
+    .navlinks a:hover{color:white}
+    .language{
+      background:var(--panel);color:white;border:1px solid var(--line);
+      padding:9px 12px;border-radius:10px;outline:none;
+    }
+    .hero{
+      padding:82px 0 55px;text-align:center;
+      background:radial-gradient(ellipse at 50% 0%,rgba(124,92,255,.2),transparent 65%);
+    }
+    .eyebrow{
+      display:inline-flex;gap:8px;align-items:center;
+      color:#c7b9ff;background:rgba(124,92,255,.12);
+      border:1px solid rgba(154,124,255,.25);
+      padding:7px 14px;border-radius:30px;font-size:13px;
+    }
+    h1{
+      font-size:clamp(38px,6vw,68px);line-height:1.12;
+      letter-spacing:-2.5px;margin:22px auto 16px;max-width:850px;
+    }
+    h1 span{
+      background:linear-gradient(90deg,#c8b8ff,#8d6aff);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero p{color:var(--muted);max-width:620px;margin:0 auto 28px;font-size:17px}
+    .searchbox{
+      display:flex;max-width:650px;margin:auto;gap:10px;
+      padding:8px;background:var(--panel);border:1px solid var(--line);
+      border-radius:16px;box-shadow:0 15px 50px rgba(0,0,0,.2);
+    }
+    .searchbox input{
+      flex:1;min-width:0;background:transparent;border:0;outline:0;
+      padding:12px;color:white;font-size:15px;
+    }
+    .primary{
+      border:0;border-radius:11px;padding:12px 22px;
+      background:linear-gradient(135deg,#9a7cff,#6848dc);
+      color:white;font-weight:750;transition:.2s;
+    }
+    .primary:hover{filter:brightness(1.12);transform:translateY(-1px)}
+    .stats{
+      display:flex;justify-content:center;gap:45px;flex-wrap:wrap;
+      margin-top:38px;color:var(--muted);font-size:13px;
+    }
+    .stats strong{display:block;color:white;font-size:20px}
+    section{padding:38px 0}
+    .section-head{
+      display:flex;justify-content:space-between;align-items:end;
+      gap:15px;margin-bottom:22px;
+    }
+    h2{font-size:27px;letter-spacing:-.7px;margin:0}
+    .sub{color:var(--muted);font-size:14px;margin:5px 0 0}
+    .categories{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+    .chip{
+      border:1px solid var(--line);background:var(--panel);
+      color:var(--muted);padding:9px 16px;border-radius:30px;
+      font-size:13px;
+    }
+    .chip.active,.chip:hover{
+      background:rgba(124,92,255,.18);border-color:var(--accent);
+      color:white;
+    }
+    .store-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+    }
+    .store{
+      background:var(--panel);border:1px solid var(--line);
+      border-radius:var(--radius);padding:21px;
+      transition:.2s;min-height:150px;
+    }
+    .store:hover{transform:translateY(-4px);border-color:rgba(154,124,255,.5)}
+    .store-logo{
+      width:48px;height:48px;border-radius:14px;
+      display:grid;place-items:center;background:var(--panel2);
+      font-size:19px;font-weight:850;margin-bottom:14px;
+      border:1px solid var(--line);
+    }
+    .store h3{margin:0;font-size:16px}
+    .store p{margin:4px 0 0;color:var(--muted);font-size:12px}
+    .store .status{font-size:11px;color:var(--muted);margin-top:12px}
+    .empty{
+      text-align:center;padding:36px 20px;border:1px dashed #343b50;
+      border-radius:var(--radius);color:var(--muted);
+      background:rgba(255,255,255,.015);
+    }
+    .empty .symbol{font-size:30px;margin-bottom:8px}
+    .empty strong{display:block;color:white;font-size:16px}
+    .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .how-card{
+      background:var(--panel);border:1px solid var(--line);
+      padding:24px;border-radius:var(--radius);
+    }
+    .number{
+      width:38px;height:38px;display:grid;place-items:center;
+      background:rgba(124,92,255,.18);color:#c7b8ff;
+      border-radius:12px;font-weight:800;margin-bottom:15px;
+    }
+    .how-card h3{margin:0 0 7px;font-size:16px}
+    .how-card p{margin:0;color:var(--muted);font-size:13px}
+    .submit-banner{
+      background:linear-gradient(120deg,#211a3c,#171d30);
+      border:1px solid rgba(154,124,255,.22);
+      padding:30px;border-radius:22px;
+      display:flex;justify-content:space-between;align-items:center;gap:20px;
+    }
+    .submit-banner p{color:var(--muted);margin:5px 0 0;font-size:14px}
+    footer{border-top:1px solid var(--line);padding:35px 0;margin-top:35px}
+    .footer-inner{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+    .copyright{color:var(--muted);font-size:12px;margin-top:22px}
+    .notice{font-size:11px;color:var(--muted);margin-top:12px}
+    [dir="rtl"] .brand{letter-spacing:0}
+    [dir="rtl"] h1{letter-spacing:0}
+    @media(max-width:850px){
+      .store-grid{grid-template-columns:repeat(2,1fr)}
+      .navlinks{gap:12px}
+      .navlinks a{display:none}
+      .how-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:520px){
+      .hero{padding:55px 0 35px}
+      .searchbox{flex-direction:column}
+      .searchbox .primary{width:100%}
+      .stats{gap:22px}
+      .store-grid{gap:10px}
+      .store{padding:15px}
+      .section-head{align-items:start;flex-direction:column}
+      .submit-banner{align-items:flex-start;flex-direction:column}
+      h2{font-size:23px}
+    }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="#" aria-label="Couponova home">
+      <span class="logo">C</span><span>Couponova</span>
+    </a>
+    <nav class="navlinks">
+      <a href="#stores" data-i="stores">Stores</a>
+      <a href="#deals" data-i="deals">Deals</a>
+      <a href="#how" data-i="how">How it works</a>
+    </nav>
+    <select class="language" id="language" aria-label="Choose language">
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <option value="tr">Türkçe</option>
+      <option value="pt">Português</option>
+      <option value="hi">हिन्दी</option>
+    </select>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">✦ <span data-i="eyebrow">Smarter shopping begins here</span></div>
+      <h1><span data-i="titleA">Find better deals.</span><br><span data-i="titleB">Save more every day.</span></h1>
+      <p data-i="intro">Explore popular stores, discover shopping offers and find discount coupons in one simple place.</p>
+      <form class="searchbox" id="searchForm">
+        <input id="searchInput" type="search" placeholder="Search stores or deals..." aria-label="Search stores">
+        <button class="primary" type="submit" data-i="search">Search</button>
+      </form>
+      <div class="stats">
+        <div><strong>8</strong><span data-i="languages">Languages</span></div>
+        <div><strong>Global</strong><span data-i="reach">Shopping discovery</span></div>
+        <div><strong>24/7</strong><span data-i="access">Easy access</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stores">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 data-i="popular">Explore popular stores</h2>
+          <p class="sub" data-i="popularSub">Find your favorite shopping destinations.</p>
+        </div>
+      </div>
+      <div class="categories" id="filters">
+        <button class="chip active" data-category="all" data-i="all">All stores</button>
+        <button class="chip" data-category="fashion" data-i="fashion">Fashion</button>
+        <button class="chip" data-category="electronics" data-i="electronics">Electronics</button>
+        <button class="chip" data-category="marketplace" data-i="marketplace">Marketplaces</button>
+      </div>
+      <div class="store-grid" id="storeGrid"></div>
+    </div>
+  </section>
+
+  <section id="deals">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 data-i="dealsTitle">Latest coupons & deals</h2>
+          <p class="sub" data-i="dealsSub">Only publish offers after their details have been checked.</p>
+        </div>
+      </div>
+      <div class="empty">
+        <div class="symbol">✦</div>
+        <strong data-i="emptyTitle">New deals are on the way</strong>
+        <span data-i="emptyText">We are preparing our first verified offers. Check back soon.</span>
+      </div>
+      <p class="notice" data-i="disclaimer">Couponova is an independent shopping discovery platform. Offers and coupon availability may vary by country and store.</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 data-i="howTitle">How Couponova works</h2>
+          <p class="sub" data-i="howSub">A simple way to discover offers.</p>
+        </div>
+      </div>
+      <div class="how-grid">
+        <article class="how-card">
+          <div class="number">01</div>
+          <h3 data-i="step1Title">Choose a store</h3>
+          <p data-i="step1Text">Explore stores and find the one you want to shop from.</p>
+        </article>
+        <article class="how-card">
+          <div class="number">02</div>
+          <h3 data-i="step2Title">Check available offers</h3>
+          <p data-i="step2Text">Review coupon details, eligibility and expiration dates.</p>
+        </article>
+        <article class="how-card">
+          <div class="number">03</div>
+          <h3 data-i="step3Title">Shop smarter</h3>
+          <p data-i="step3Text">Visit the store and apply an eligible offer at checkout.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="submit-banner">
+        <div>
+          <h2 data-i="submitTitle">Know a great deal?</h2>
+          <p data-i="submitText">Help us discover useful offers for shoppers around the world.</p>
+        </div>
+        <a class="primary" href="mailto:hello@couponova.com?subject=Coupon%20or%20Deal%20Submission" data-i="submitButton">Suggest an offer</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a class="brand" href="#"><span class="logo">C</span><span>Couponova</span></a>
+      <div class="footer-links">
+        <a href="privacy.html" data-i="privacy">Privacy</a>
+        <a href="terms.html" data-i="terms">Terms</a>
+        <a href="cookies.html" data-i="cookies">Cookies</a>
+        <a href="affiliate.html" data-i="affiliate">Affiliate disclosure</a>
+        <a href="mailto:hello@couponova.com" data-i="contact">Contact</a>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year"></span> Couponova. <span data-i="rights">All rights reserved.</span></div>
+  </div>
+</footer>
+
+<script>
+const stores = [
+  {name:"SHEIN",category:"fashion",mark:"S",description:"Fashion & lifestyle"},
+  {name:"AliExpress",category:"marketplace",mark:"A",description:"Global marketplace"},
+  {name:"Temu",category:"marketplace",mark:"T",description:"Online marketplace"},
+  {name:"Trendyol",category:"fashion",mark:"T",description:"Fashion & shopping"},
+  {name:"Amazon",category:"marketplace",mark:"a",description:"Online shopping"},
+  {name:"ASOS",category:"fashion",mark:"AS",description:"Fashion & beauty"},
+  {name:"Samsung",category:"electronics",mark:"S",description:"Electronics & technology"},
+  {name:"Nike",category:"fashion",mark:"N",description:"Sportswear & footwear"}
+];
+
+const translations = {
+en:{
+stores:"Stores",deals:"Deals",how:"How it works",eyebrow:"Smarter shopping begins here",
+titleA:"Find better deals.",titleB:"Save more every day.",
+intro:"Explore popular stores, discover shopping offers and find discount coupons in one simple place.",
+search:"Search",placeholder:"Search stores or deals...",languages:"Languages",reach:"Shopping discovery",access:"Easy access",
+popular:"Explore popular stores",popularSub:"Find your favorite shopping destinations.",
+all:"All stores",fashion:"Fashion",electronics:"Electronics",marketplace:"Marketplaces",
+dealsTitle:"Latest coupons & deals",dealsSub:"Only publish offers after their details have been checked.",
+emptyTitle:"New deals are on the way",emptyText:"We are preparing our first verified offers. Check back soon.",
+disclaimer:"Couponova is an independent shopping discovery platform. Offers and coupon availability may vary by country and store.",
+howTitle:"How Couponova works",howSub:"A simple way to discover offers.",
+step1Title:"Choose a store",step1Text:"Explore stores and find the one you want to shop from.",
+step2Title:"Check available offers",step2Text:"Review coupon details, eligibility and expiration dates.",
+step3Title:"Shop smarter",step3Text:"Visit the store and apply an eligible offer at checkout.",
+submitTitle:"Know a great deal?",submitText:"Help us discover useful offers for shoppers around the world.",
+submitButton:"Suggest an offer",privacy:"Privacy",terms:"Terms",cookies:"Cookies",affiliate:"Affiliate disclosure",contact:"Contact",rights:"All rights reserved.",
+noResults:"No stores match your search.",directory:"Store directory listing",status:"Offers coming soon"
+},
+ar:{
+stores:"المتاجر",deals:"العروض",how:"كيف نعمل",eyebrow:"تسوّق بذكاء ووفّر أكثر",
+titleA:"اعثر على أفضل العروض.",titleB:"وفّر أكثر كل يوم.",
+intro:"اكتشف المتاجر العالمية والعروض وكوبونات الخصم في مكان واحد.",
+search:"بحث",placeholder:"ابحث عن متجر أو عرض...",languages:"لغات",reach:"اكتشاف التسوق",access:"متاح بسهولة",
+popular:"اكتشف المتاجر الشهيرة",popularSub:"اعثر على وجهتك المفضلة للتسوق.",
+all:"كل المتاجر",fashion:"الأزياء",electronics:"الإلكترونيات",marketplace:"الأسواق",
+dealsTitle:"أحدث الكوبونات والعروض",dealsSub:"لن ننشر أي عرض قبل التحقق من تفاصيله.",
+emptyTitle:"العروض قادمة قريباً",emptyText:"نعمل على تجهيز أول مجموعة من العروض المتحقق منها. تابعنا قريباً.",
+disclaimer:"Couponova منصة مستقلة لاكتشاف التسوق. قد تختلف العروض وصلاحية الكوبونات حسب الدولة والمتجر.",
+howTitle:"كيف تعمل Couponova",howSub:"طريقة سهلة لاكتشاف العروض.",
+step1Title:"اختر متجراً",step1Text:"تصفح المتاجر واختر وجهتك المفضلة للتسوق.",
+step2Title:"تحقق من العروض",step2Text:"راجع تفاصيل الكوبون وشروطه وتاريخ انتهائه.",
+step3Title:"تسوّق بذكاء",step3Text:"انتقل إلى المتجر واستخدم العرض المؤهل عند الدفع.",
+submitTitle:"تعرف على عرض مميز؟",submitText:"ساعدنا في اكتشاف عروض مفيدة للمتسوقين حول العالم.",
+submitButton:"اقترح عرضاً",privacy:"الخصوصية",terms:"الشروط",cookies:"ملفات الارتباط",affiliate:"الإفصاح عن العمولة",contact:"تواصل معنا",rights:"جميع الحقوق محفوظة.",
+noResults:"لا توجد متاجر تطابق بحثك.",directory:"دليل المتاجر",status:"العروض قريباً"
+},
+es:{
+stores:"Tiendas",deals:"Ofertas",how:"Cómo funciona",eyebrow:"Compra de forma más inteligente",
+titleA:"Encuentra mejores ofertas.",titleB:"Ahorra más cada día.",
+intro:"Explora tiendas, descubre ofertas y encuentra cupones en un solo lugar.",
+search:"Buscar",placeholder:"Buscar tiendas u ofertas...",languages:"Idiomas",reach:"Descubrimiento",access:"Acceso fácil",
+popular:"Tiendas populares",popularSub:"Encuentra tus tiendas favoritas.",
+all:"Todas",fashion:"Moda",electronics:"Electrónica",marketplace:"Mercados",
+dealsTitle:"Últimos cupones y ofertas",dealsSub:"Publicamos ofertas solo después de comprobar sus detalles.",
+emptyTitle:"Próximamente nuevas ofertas",emptyText:"Estamos preparando nuestras primeras ofertas verificadas.",
+disclaimer:"Couponova es una plataforma independiente. Las ofertas pueden variar según el país y la tienda.",
+howTitle:"Cómo funciona Couponova",howSub:"Una forma sencilla de descubrir ofertas.",
+step1Title:"Elige una tienda",step1Text:"Explora las tiendas y elige dónde comprar.",
+step2Title:"Revisa las ofertas",step2Text:"Comprueba los detalles, requisitos y vencimiento.",
+step3Title:"Compra mejor",step3Text:"Visita la tienda y aplica una oferta válida.",
+submitTitle:"¿Conoces una buena oferta?",submitText:"Ayúdanos a descubrir ofertas útiles.",
+submitButton:"Enviar una oferta",privacy:"Privacidad",terms:"Términos",cookies:"Cookies",affiliate:"Aviso de afiliación",contact:"Contacto",rights:"Todos los derechos reservados.",
+noResults:"No hay tiendas que coincidan.",directory:"Directorio de tiendas",status:"Ofertas próximamente"
+},
+fr:{
+stores:"Boutiques",deals:"Offres",how:"Fonctionnement",eyebrow:"Achetez plus intelligemment",
+titleA:"Trouvez de meilleures offres.",titleB:"Économisez chaque jour.",
+intro:"Explorez les boutiques et découvrez des offres et coupons au même endroit.",
+search:"Rechercher",placeholder:"Rechercher une boutique...",languages:"Langues",reach:"Découverte",access:"Accès facile",
+popular:"Boutiques populaires",popularSub:"Trouvez vos boutiques préférées.",
+all:"Toutes",fashion:"Mode",electronics:"Électronique",marketplace:"Marchés",
+dealsTitle:"Derniers coupons et offres",dealsSub:"Les offres sont publiées après vérification.",
+emptyTitle:"De nouvelles offres arrivent",emptyText:"Nous préparons nos premières offres vérifiées.",
+disclaimer:"Couponova est une plateforme indépendante. Les offres varient selon le pays et la boutique.",
+howTitle:"Comment fonctionne Couponova",howSub:"Une façon simple de découvrir des offres.",
+step1Title:"Choisissez une boutique",step1Text:"Explorez les boutiques disponibles.",
+step2Title:"Vérifiez les offres",step2Text:"Consultez les conditions et les dates d'expiration.",
+step3Title:"Achetez malin",step3Text:"Utilisez une offre admissible lors du paiement.",
+submitTitle:"Une bonne offre à partager ?",submitText:"Aidez-nous à trouver des offres utiles.",
+submitButton:"Proposer une offre",privacy:"Confidentialité",terms:"Conditions",cookies:"Cookies",affiliate:"Divulgation affiliée",contact:"Contact",rights:"Tous droits réservés.",
+noResults:"Aucune boutique trouvée.",directory:"Annuaire des boutiques",status:"Offres bientôt"
+},
+de:{
+stores:"Shops",deals:"Angebote",how:"So funktioniert's",eyebrow:"Clever einkaufen",
+titleA:"Finde bessere Angebote.",titleB:"Spare jeden Tag mehr.",
+intro:"Entdecke Shops, Angebote und Rabattcodes an einem Ort.",
+search:"Suchen",placeholder:"Shops oder Angebote suchen...",languages:"Sprachen",reach:"Shopping entdecken",access:"Einfacher Zugang",
+popular:"Beliebte Shops",popularSub:"Finde deine Lieblingsshops.",
+all:"Alle",fashion:"Mode",electronics:"Elektronik",marketplace:"Marktplätze",
+dealsTitle:"Aktuelle Gutscheine & Angebote",dealsSub:"Angebote werden erst nach Prüfung veröffentlicht.",
+emptyTitle:"Neue Angebote folgen bald",emptyText:"Wir bereiten unsere ersten geprüften Angebote vor.",
+disclaimer:"Couponova ist eine unabhängige Plattform. Angebote können je nach Land und Shop variieren.",
+howTitle:"So funktioniert Couponova",howSub:"Angebote einfach entdecken.",
+step1Title:"Shop auswählen",step1Text:"Entdecke Shops und wähle deinen Favoriten.",
+step2Title:"Angebote prüfen",step2Text:"Prüfe Details, Bedingungen und Ablaufdatum.",
+step3Title:"Clever einkaufen",step3Text:"Nutze ein gültiges Angebot beim Bezahlen.",
+submitTitle:"Kennst du ein gutes Angebot?",submitText:"Hilf uns, nützliche Angebote zu finden.",
+submitButton:"Angebot vorschlagen",privacy:"Datenschutz",terms:"Nutzungsbedingungen",cookies:"Cookies",affiliate:"Affiliate-Hinweis",contact:"Kontakt",rights:"Alle Rechte vorbehalten.",
+noResults:"Keine passenden Shops gefunden.",directory:"Shop-Verzeichnis",status:"Angebote folgen bald"
+},
+tr:{
+stores:"Mağazalar",deals:"Fırsatlar",how:"Nasıl çalışır",eyebrow:"Daha akıllı alışveriş",
+titleA:"Daha iyi fırsatlar bul.",titleB:"Her gün daha fazla tasarruf et.",
+intro:"Mağazaları keşfet, fırsatları ve indirim kuponlarını tek yerde bul.",
+search:"Ara",placeholder:"Mağaza veya fırsat ara...",languages:"Diller",reach:"Alışveriş keşfi",access:"Kolay erişim",
+popular:"Popüler mağazalar",popularSub:"Favori alışveriş mağazalarını bul.",
+all:"Tümü",fashion:"Moda",electronics:"Elektronik",marketplace:"Pazar yerleri",
+dealsTitle:"Son kuponlar ve fırsatlar",dealsSub:"Teklifleri yalnızca ayrıntıları kontrol ettikten sonra yayınlarız.",
+emptyTitle:"Yeni fırsatlar yakında",emptyText:"İlk doğrulanmış fırsatlarımızı hazırlıyoruz.",
+disclaimer:"Couponova bağımsız bir alışveriş keşif platformudur. Fırsatlar ülkeye ve mağazaya göre değişebilir.",
+howTitle:"Couponova nasıl çalışır",howSub:"Fırsatları keşfetmenin kolay yolu.",
+step1Title:"Mağaza seç",step1Text:"Mağazalara göz at ve alışveriş yapmak istediğini seç.",
+step2Title:"Fırsatları kontrol et",step2Text:"Kupon ayrıntılarını ve son kullanma tarihini incele.",
+step3Title:"Akıllıca alışveriş yap",step3Text:"Ödeme sırasında uygun teklifi kullan.",
+submitTitle:"Harika bir fırsat mı biliyorsun?",submitText:"Faydalı fırsatları keşfetmemize yardım et.",
+submitButton:"Fırsat öner",privacy:"Gizlilik",terms:"Koşullar",cookies:"Çerezler",affiliate:"Satış ortaklığı açıklaması",contact:"İletişim",rights:"Tüm hakları saklıdır.",
+noResults:"Eşleşen mağaza bulunamadı.",directory:"Mağaza rehberi",status:"Fırsatlar yakında"
+},
+pt:{
+stores:"Lojas",deals:"Ofertas",how:"Como funciona",eyebrow:"Compre de forma inteligente",
+titleA:"Encontre melhores ofertas.",titleB:"Economize mais todos os dias.",
+intro:"Explore lojas, descubra ofertas e encontre cupons em um só lugar.",
+search:"Pesquisar",placeholder:"Pesquisar lojas ou ofertas...",languages:"Idiomas",reach:"Descoberta",access:"Acesso fácil",
+popular:"Lojas populares",popularSub:"Encontre suas lojas favoritas.",
+all:"Todas",fashion:"Moda",electronics:"Eletrônicos",marketplace:"Marketplaces",
+dealsTitle:"Cupons e ofertas recentes",dealsSub:"Publicamos ofertas somente após verificar os detalhes.",
+emptyTitle:"Novas ofertas em breve",emptyText:"Estamos preparando nossas primeiras ofertas verificadas.",
+disclaimer:"Couponova é uma plataforma independente. As ofertas podem variar conforme o país e a loja.",
+howTitle:"Como funciona a Couponova",howSub:"Uma maneira simples de descobrir ofertas.",
+step1Title:"Escolha uma loja",step1Text:"Explore as lojas e escolha onde comprar.",
+step2Title:"Confira as ofertas",step2Text:"Verifique os detalhes, requisitos e validade.",
+step3Title:"Compre melhor",step3Text:"Aplique uma oferta elegível no pagamento.",
+submitTitle:"Conhece uma boa oferta?",submitText:"Ajude-nos a descobrir ofertas úteis.",
+submitButton:"Sugerir oferta",privacy:"Privacidade",terms:"Termos",cookies:"Cookies",affiliate:"Aviso de afiliados",contact:"Contato",rights:"Todos os direitos reservados.",
+noResults:"Nenhuma loja encontrada.",directory:"Diretório de lojas",status:"Ofertas em breve"
+},
+hi:{
+stores:"स्टोर",deals:"ऑफ़र",how:"यह कैसे काम करता है",eyebrow:"समझदारी से खरीदारी करें",
+titleA:"बेहतर ऑफ़र खोजें।",titleB:"हर दिन अधिक बचत करें।",
+intro:"लोकप्रिय स्टोर खोजें और छूट कूपन तथा ऑफ़र एक ही जगह देखें।",
+search:"खोजें",placeholder:"स्टोर या ऑफ़र खोजें...",languages:"भाषाएँ",reach:"शॉपिंग खोज",access:"आसान पहुँच",
+popular:"लोकप्रिय स्टोर",popularSub:"अपने पसंदीदा स्टोर खोजें।",
+all:"सभी",fashion:"फैशन",electronics:"इलेक्ट्रॉनिक्स",marketplace:"मार्केटप्लेस",
+dealsTitle:"नए कूपन और ऑफ़र",dealsSub:"जाँच के बाद ही ऑफ़र प्रकाशित किए जाएँगे।",
+emptyTitle:"नए ऑफ़र जल्द आ रहे हैं",emptyText:"हम पहले सत्यापित ऑफ़र तैयार कर रहे हैं।",
+disclaimer:"Couponova एक स्वतंत्र शॉपिंग खोज प्लेटफ़ॉर्म है। ऑफ़र देश और स्टोर के अनुसार बदल सकते हैं।",
+howTitle:"Couponova कैसे काम करता है",howSub:"ऑफ़र खोजने का आसान तरीका।",
+step1Title:"स्टोर चुनें",step1Text:"स्टोर देखें और अपनी पसंद चुनें।",
+step2Title:"ऑफ़र जाँचें",step2Text:"कूपन की शर्तें और समाप्ति तिथि देखें।",
+step3Title:"समझदारी से खरीदें",step3Text:"भुगतान के समय योग्य ऑफ़र लागू करें।",
+submitTitle:"कोई अच्छा ऑफ़र जानते हैं?",submitText:"दूसरे खरीदारों के लिए उपयोगी ऑफ़र खोजने में मदद करें।",
+submitButton:"ऑफ़र सुझाएँ",privacy:"गोपनीयता",terms:"शर्तें",cookies:"कुकीज़",affiliate:"एफ़िलिएट जानकारी",contact:"संपर्क",rights:"सर्वाधिकार सुरक्षित।",
+noResults:"कोई स्टोर नहीं मिला।",directory:"स्टोर निर्देशिका",status:"ऑफ़र जल्द"
+}
+};
+
+let currentCategory = "all";
+let currentQuery = "";
+
+function renderStores(){
+  const t = translations[document.documentElement.lang] || translations.en;
+  const filtered = stores.filter(s =>
+    (currentCategory==="all" || s.category===currentCategory) &&
+    (s.name.toLowerCase().includes(currentQuery) || s.description.toLowerCase().includes(currentQuery))
+  );
+  const grid = document.getElementById("storeGrid");
+  grid.innerHTML = "";
+  if(!filtered.length){
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1">${t.noResults}</div>`;
+    return;
+  }
+  filtered.forEach(store=>{
+    const card = document.createElement("article");
+    card.className = "store";
+    const mark = document.createElement("div");
+    mark.className = "store-logo";
+    mark.textContent = store.mark;
+    const name = document.createElement("h3");
+    name.textContent = store.name;
+    const desc = document.createElement("p");
+    desc.textContent = store.description;
+    const status = document.createElement("div");
+    status.className = "status";
+    status.textContent = t.status;
+    card.append(mark,name,desc,status);
+    grid.appendChild(card);
+  });
+}
+
+function setLanguage(lang){
+  const t = translations[lang] || translations.en;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang==="ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-i]").forEach(el=>{
+    const key = el.dataset.i;
+    if(t[key]) el.textContent = t[key];
+  });
+  document.getElementById("searchInput").placeholder = t.placeholder;
+  renderStores();
+}
+
+document.getElementById("language").addEventListener("change",e=>setLanguage(e.target.value));
+document.getElementById("searchForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  currentQuery = document.getElementById("searchInput").value.trim().toLowerCase();
+  renderStores();
+  document.getElementById("stores").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("searchInput").addEventListener("input",e=>{
+  currentQuery = e.target.value.trim().toLowerCase();
+  renderStores();
+});
+document.getElementById("filters").addEventListener("click",e=>{
+  const btn = e.target.closest("button[data-category]");
+  if(!btn) return;
+  currentCategory = btn.dataset.category;
+  document.querySelectorAll(".chip").forEach(b=>b.classList.toggle("active",b===btn));
+  renderStores();
+});
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const browserLang = (navigator.language || "en").slice(0,2).toLowerCase();
+const supported = Object.keys(translations);
+const initialLang = supported.includes(browserLang) ? browserLang : "en";
+document.getElementById("language").value = initialLang;
+setLanguage(initialLang);
+</script>
+</body>
+</html>
