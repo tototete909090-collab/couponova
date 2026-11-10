@@ -1,0 +1,26 @@
+
+{
+  "store": "SHEIN",
+  "lastReviewed": null,
+  "disclaimer": "النسب المعروضة مقدمة من صاحب الموقع وليست تأكيداً من SHEIN. تحقق من ظهور الخصم في ملخص الطلب قبل الدفع. قد تختلف أهلية الكوبونات حسب البلد والحساب والمنتجات وشروط العرض.",
+  "coupons": [
+    {
+      "code": "S4T32",
+      "displayedDiscount": "60%",
+      "status": "listed_unverified",
+      "source": "site_owner",
+      "country": null,
+      "minimumSpend": null,
+      "expires": null
+    },
+    {
+      "code": "H3RAW",
+      "displayedDiscount": "47%",
+      "status": "listed_unverified",
+      "source": "site_owner",
+      "country": null,
+      "minimumSpend": null,
+      "expires": null
+    }
+  ]
+}
