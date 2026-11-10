@@ -13,48 +13,37 @@
         await navigator.clipboard.writeText(code);
       } else {
         const field = document.createElement("textarea");
-
         field.value = code;
         field.setAttribute("readonly", "");
         field.style.position = "fixed";
         field.style.opacity = "0";
-
         document.body.appendChild(field);
         field.select();
 
         const copied = document.execCommand("copy");
         field.remove();
 
-        if (!copied) {
-          throw new Error("Copy failed");
-        }
+        if (!copied) throw new Error("Copy failed");
       }
 
       button.textContent = isArabic ? "تم النسخ ✓" : "Copied ✓";
-      button.setAttribute("aria-label", isArabic ? "تم نسخ الكود" : "Code copied");
-
     } catch (error) {
       button.textContent = isArabic ? "انسخ يدوياً" : "Copy manually";
     }
 
     window.setTimeout(() => {
       button.textContent = originalText;
-      button.removeAttribute("aria-label");
     }, 1800);
   }
 
-  // ربط أزرار نسخ الأكواد
   document.querySelectorAll("[data-copy]").forEach((button) => {
     button.addEventListener("click", () => {
       const code = button.getAttribute("data-copy");
-
-      if (code) {
-        copyCoupon(code, button);
-      }
+      if (code) copyCoupon(code, button);
     });
   });
 
-  // البحث داخل بطاقات الكوبونات
+  // البحث في الكوبونات
   const searchInput = document.querySelector("[data-coupon-search]");
   const couponCards = Array.from(
     document.querySelectorAll("[data-coupon-card]")
@@ -64,23 +53,13 @@
   function filterCoupons() {
     if (!searchInput) return;
 
-    const query = searchInput.value
-      .trim()
-      .toLocaleLowerCase();
-
+    const query = searchInput.value.trim().toLocaleLowerCase();
     let visibleCount = 0;
 
     couponCards.forEach((card) => {
-      const searchableText = card.textContent
-        .toLocaleLowerCase();
-
-      const matches = searchableText.includes(query);
-
+      const matches = card.textContent.toLocaleLowerCase().includes(query);
       card.hidden = !matches;
-
-      if (matches) {
-        visibleCount++;
-      }
+      if (matches) visibleCount++;
     });
 
     if (emptyMessage) {
@@ -92,7 +71,6 @@
     searchInput.addEventListener("input", filterCoupons);
 
     const searchForm = searchInput.closest("form");
-
     if (searchForm) {
       searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -107,3 +85,4 @@
   });
 
 })();
+
