@@ -1,0 +1,319 @@
+{
+  "project": "Couponova",
+  "version": 1,
+  "defaultLanguage": "ar",
+  "translationWorkflow": {
+    "method": "machine_with_human_review",
+    "machineTranslation": "draft_only",
+    "humanReviewRequiredFor": [
+      "homepage",
+      "store_pages",
+      "coupon_terms",
+      "seo_metadata"
+    ],
+    "preserveCouponCodes": true,
+    "preserveBrandNames": true
+  },
+  "languages": [
+    {
+      "code": "ar",
+      "name": "العربية",
+      "nativeName": "العربية",
+      "dir": "rtl"
+    },
+    {
+      "code": "en",
+      "name": "الإنجليزية",
+      "nativeName": "English",
+      "dir": "ltr"
+    },
+    {
+      "code": "es",
+      "name": "الإسبانية",
+      "nativeName": "Español",
+      "dir": "ltr"
+    },
+    {
+      "code": "fr",
+      "name": "الفرنسية",
+      "nativeName": "Français",
+      "dir": "ltr"
+    },
+    {
+      "code": "de",
+      "name": "الألمانية",
+      "nativeName": "Deutsch",
+      "dir": "ltr"
+    },
+    {
+      "code": "pt",
+      "name": "البرتغالية",
+      "nativeName": "Português",
+      "dir": "ltr"
+    },
+    {
+      "code": "it",
+      "name": "الإيطالية",
+      "nativeName": "Italiano",
+      "dir": "ltr"
+    },
+    {
+      "code": "nl",
+      "name": "الهولندية",
+      "nativeName": "Nederlands",
+      "dir": "ltr"
+    },
+    {
+      "code": "tr",
+      "name": "التركية",
+      "nativeName": "Türkçe",
+      "dir": "ltr"
+    },
+    {
+      "code": "ru",
+      "name": "الروسية",
+      "nativeName": "Русский",
+      "dir": "ltr"
+    },
+    {
+      "code": "uk",
+      "name": "الأوكرانية",
+      "nativeName": "Українська",
+      "dir": "ltr"
+    },
+    {
+      "code": "pl",
+      "name": "البولندية",
+      "nativeName": "Polski",
+      "dir": "ltr"
+    },
+    {
+      "code": "cs",
+      "name": "التشيكية",
+      "nativeName": "Čeština",
+      "dir": "ltr"
+    },
+    {
+      "code": "sk",
+      "name": "السلوفاكية",
+      "nativeName": "Slovenčina",
+      "dir": "ltr"
+    },
+    {
+      "code": "ro",
+      "name": "الرومانية",
+      "nativeName": "Română",
+      "dir": "ltr"
+    },
+    {
+      "code": "hu",
+      "name": "المجرية",
+      "nativeName": "Magyar",
+      "dir": "ltr"
+    },
+    {
+      "code": "el",
+      "name": "اليونانية",
+      "nativeName": "Ελληνικά",
+      "dir": "ltr"
+    },
+    {
+      "code": "sv",
+      "name": "السويدية",
+      "nativeName": "Svenska",
+      "dir": "ltr"
+    },
+    {
+      "code": "no",
+      "name": "النرويجية",
+      "nativeName": "Norsk",
+      "dir": "ltr"
+    },
+    {
+      "code": "da",
+      "name": "الدنماركية",
+      "nativeName": "Dansk",
+      "dir": "ltr"
+    },
+    {
+      "code": "fi",
+      "name": "الفنلندية",
+      "nativeName": "Suomi",
+      "dir": "ltr"
+    },
+    {
+      "code": "he",
+      "name": "العبرية",
+      "nativeName": "עברית",
+      "dir": "rtl"
+    },
+    {
+      "code": "fa",
+      "name": "الفارسية",
+      "nativeName": "فارسی",
+      "dir": "rtl"
+    },
+    {
+      "code": "ur",
+      "name": "الأردية",
+      "nativeName": "اردو",
+      "dir": "rtl"
+    },
+    {
+      "code": "hi",
+      "name": "الهندية",
+      "nativeName": "हिन्दी",
+      "dir": "ltr"
+    },
+    {
+      "code": "bn",
+      "name": "البنغالية",
+      "nativeName": "বাংলা",
+      "dir": "ltr"
+    },
+    {
+      "code": "pa",
+      "name": "البنجابية",
+      "nativeName": "ਪੰਜਾਬੀ",
+      "dir": "ltr"
+    },
+    {
+      "code": "ta",
+      "name": "التاميلية",
+      "nativeName": "தமிழ்",
+      "dir": "ltr"
+    },
+    {
+      "code": "te",
+      "name": "التيلوغوية",
+      "nativeName": "తెలుగు",
+      "dir": "ltr"
+    },
+    {
+      "code": "th",
+      "name": "التايلاندية",
+      "nativeName": "ไทย",
+      "dir": "ltr"
+    },
+    {
+      "code": "vi",
+      "name": "الفيتنامية",
+      "nativeName": "Tiếng Việt",
+      "dir": "ltr"
+    },
+    {
+      "code": "id",
+      "name": "الإندونيسية",
+      "nativeName": "Bahasa Indonesia",
+      "dir": "ltr"
+    },
+    {
+      "code": "ms",
+      "name": "الملايوية",
+      "nativeName": "Bahasa Melayu",
+      "dir": "ltr"
+    },
+    {
+      "code": "tl",
+      "name": "الفلبينية",
+      "nativeName": "Filipino",
+      "dir": "ltr"
+    },
+    {
+      "code": "zh-CN",
+      "name": "الصينية المبسطة",
+      "nativeName": "简体中文",
+      "dir": "ltr"
+    },
+    {
+      "code": "zh-TW",
+      "name": "الصينية التقليدية",
+      "nativeName": "繁體中文",
+      "dir": "ltr"
+    },
+    {
+      "code": "ja",
+      "name": "اليابانية",
+      "nativeName": "日本語",
+      "dir": "ltr"
+    },
+    {
+      "code": "ko",
+      "name": "الكورية",
+      "nativeName": "한국어",
+      "dir": "ltr"
+    },
+    {
+      "code": "sw",
+      "name": "السواحيلية",
+      "nativeName": "Kiswahili",
+      "dir": "ltr"
+    },
+    {
+      "code": "am",
+      "name": "الأمهرية",
+      "nativeName": "አማርኛ",
+      "dir": "ltr"
+    },
+    {
+      "code": "ha",
+      "name": "الهوسا",
+      "nativeName": "Hausa",
+      "dir": "ltr"
+    },
+    {
+      "code": "yo",
+      "name": "اليوروبا",
+      "nativeName": "Yorùbá",
+      "dir": "ltr"
+    },
+    {
+      "code": "ig",
+      "name": "الإيغبو",
+      "nativeName": "Asụsụ Igbo",
+      "dir": "ltr"
+    },
+    {
+      "code": "af",
+      "name": "الأفريقانية",
+      "nativeName": "Afrikaans",
+      "dir": "ltr"
+    },
+    {
+      "code": "ca",
+      "name": "الكتالونية",
+      "nativeName": "Català",
+      "dir": "ltr"
+    },
+    {
+      "code": "eu",
+      "name": "الباسكية",
+      "nativeName": "Euskara",
+      "dir": "ltr"
+    },
+    {
+      "code": "hr",
+      "name": "الكرواتية",
+      "nativeName": "Hrvatski",
+      "dir": "ltr"
+    },
+    {
+      "code": "sr",
+      "name": "الصربية",
+      "nativeName": "Српски",
+      "dir": "ltr"
+    },
+    {
+      "code": "bg",
+      "name": "البلغارية",
+      "nativeName": "Български",
+      "dir": "ltr"
+    },
+    {
+      "code": "et",
+      "name": "الإستونية",
+      "nativeName": "Eesti",
+      "dir": "ltr"
+    }
+  ]
+}
