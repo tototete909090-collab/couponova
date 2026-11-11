@@ -1,34 +1,35 @@
 
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://couponova.cfd/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://couponova.cfd/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://couponova.cfd/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://couponova.cfd/"/>
+    <loc>https://tototete909090-collab.github.io/couponova/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tototete909090-collab.github.io/couponova/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tototete909090-collab.github.io/couponova/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tototete909090-collab.github.io/couponova/"/>
   </url>
 
   <url>
-    <loc>https://couponova.cfd/en/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://couponova.cfd/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://couponova.cfd/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://couponova.cfd/"/>
+    <loc>https://tototete909090-collab.github.io/couponova/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tototete909090-collab.github.io/couponova/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tototete909090-collab.github.io/couponova/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tototete909090-collab.github.io/couponova/"/>
   </url>
 
   <url>
-    <loc>https://couponova.cfd/shein/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://couponova.cfd/shein/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://couponova.cfd/en/shein/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://couponova.cfd/shein/"/>
+    <loc>https://tototete909090-collab.github.io/couponova/shein/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tototete909090-collab.github.io/couponova/shein/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tototete909090-collab.github.io/couponova/en/shein/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tototete909090-collab.github.io/couponova/shein/"/>
   </url>
 
   <url>
-    <loc>https://couponova.cfd/en/shein/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://couponova.cfd/shein/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://couponova.cfd/en/shein/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://couponova.cfd/shein/"/>
+    <loc>https://tototete909090-collab.github.io/couponova/en/shein/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tototete909090-collab.github.io/couponova/shein/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tototete909090-collab.github.io/couponova/en/shein/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tototete909090-collab.github.io/couponova/shein/"/>
   </url>
 
 </urlset>
