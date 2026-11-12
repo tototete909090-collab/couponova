@@ -1,6 +1,4 @@
-
 User-agent: *
 Allow: /
 
 Sitemap: https://tototete909090-collab.github.io/couponova/sitemap.xml
-
