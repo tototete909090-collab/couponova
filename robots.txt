@@ -1,4 +1,11 @@
+
 User-agent: *
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Googlebot
 Allow: /
 
 Sitemap: https://tototete909090-collab.github.io/couponova/sitemap.xml
