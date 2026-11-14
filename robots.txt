@@ -8,4 +8,13 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
 Sitemap: https://tototete909090-collab.github.io/couponova/sitemap.xml
