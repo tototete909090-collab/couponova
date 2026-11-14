@@ -7,6 +7,10 @@
 - Arabic home: https://tototete909090-collab.github.io/couponova/
 - Arabic SHEIN coupon page: https://tototete909090-collab.github.io/couponova/shein/
 - Arabic SHEIN usage guide: https://tototete909090-collab.github.io/couponova/shein/how-to-use/
+- Arabic SHEIN new-user codes: https://tototete909090-collab.github.io/couponova/shein/new-user-code/
+- About Couponova: https://tototete909090-collab.github.io/couponova/about/
+- Editorial policy: https://tototete909090-collab.github.io/couponova/editorial-policy/
+- Contact and issue reporting: https://tototete909090-collab.github.io/couponova/contact/
 - English home: https://tototete909090-collab.github.io/couponova/en/
 - English SHEIN coupon page: https://tototete909090-collab.github.io/couponova/en/shein/
 
@@ -14,7 +18,7 @@
 
 - Couponova is not owned by, operated by, or officially endorsed by SHEIN.
 - The listed codes are user-submitted/site-owner listings unless a page explicitly states otherwise.
-- The current Arabic listings are S4T32 (listed discount: 60%) and H3RAW (listed discount: 47%). Both are unverified.
+- The current Arabic listings are S4T32 (listed discount: 60%) and H3RAW (listed discount: 47%). Both were tested and marked as working on 2026-11-14; eligibility can still vary.
 - Discount eligibility may vary by country, account, products, minimum order, and store terms.
 - The checkout total shown by SHEIN is the final authority on whether a coupon applies.
 

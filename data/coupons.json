@@ -1,26 +1,32 @@
-
 {
   "store": "SHEIN",
-  "lastReviewed": null,
-  "disclaimer": "النسب المعروضة مقدمة من صاحب الموقع وليست تأكيداً من SHEIN. تحقق من ظهور الخصم في ملخص الطلب قبل الدفع. قد تختلف أهلية الكوبونات حسب البلد والحساب والمنتجات وشروط العرض.",
+  "lastReviewed": "2026-11-14",
+  "verificationPolicy": "تم اختبار الأكواد وأكد صاحب الموقع فعاليتها عند آخر مراجعة. قد تختلف الأهلية حسب الدولة والحساب والمنتجات وشروط SHEIN.",
+  "disclaimer": "الأكواد مجرّبة عند آخر مراجعة وليست ضماناً لاستمرار العرض. تحقق من ظهور الخصم في ملخص الطلب قبل الدفع.",
   "coupons": [
     {
       "code": "S4T32",
       "displayedDiscount": "60%",
-      "status": "listed_unverified",
-      "source": "site_owner",
-      "country": null,
-      "minimumSpend": null,
-      "expires": null
+      "status": "verified_working",
+      "source": "site_owner_test",
+      "verifiedAt": "2026-11-14",
+      "verificationMethod": "اختبار مباشر عند إتمام الطلب",
+      "country": "غير محددة",
+      "minimumSpend": "غير محدد",
+      "expires": null,
+      "audience": "قد يختلف حسب الحساب والدولة"
     },
     {
       "code": "H3RAW",
       "displayedDiscount": "47%",
-      "status": "listed_unverified",
-      "source": "site_owner",
-      "country": null,
-      "minimumSpend": null,
-      "expires": null
+      "status": "verified_working",
+      "source": "site_owner_test",
+      "verifiedAt": "2026-11-14",
+      "verificationMethod": "اختبار مباشر عند إتمام الطلب",
+      "country": "غير محددة",
+      "minimumSpend": "غير محدد",
+      "expires": null,
+      "audience": "قد يختلف حسب الحساب والدولة"
     }
   ]
 }
