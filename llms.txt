@@ -6,6 +6,7 @@
 
 - Arabic home: https://tototete909090-collab.github.io/couponova/
 - Arabic SHEIN coupon page: https://tototete909090-collab.github.io/couponova/shein/
+- Arabic SHEIN usage guide: https://tototete909090-collab.github.io/couponova/shein/how-to-use/
 - English home: https://tototete909090-collab.github.io/couponova/en/
 - English SHEIN coupon page: https://tototete909090-collab.github.io/couponova/en/shein/
 
