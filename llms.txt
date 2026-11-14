@@ -1,6 +1,6 @@
 # Couponova
 
-> Couponova is an independent Arabic and English website that lists SHEIN coupon codes and explains their conditions and verification status.
+> Couponova is an independent global Arabic and English website that lists SHEIN coupon codes and explains their conditions and verification status.
 
 ## Canonical pages
 
@@ -19,7 +19,7 @@
 - Couponova is not owned by, operated by, or officially endorsed by SHEIN.
 - The listed codes are user-submitted/site-owner listings unless a page explicitly states otherwise.
 - The current Arabic listings are S4T32 (listed discount: 60%) and H3RAW (listed discount: 47%). Both were tested and marked as working on 2026-11-14; eligibility can still vary.
-- Discount eligibility may vary by country, account, products, minimum order, and store terms.
+- The site targets users worldwide; discount eligibility may still vary by account, currency, products, minimum order, local campaign rules, and store terms.
 - The checkout total shown by SHEIN is the final authority on whether a coupon applies.
 
 ## Topics
