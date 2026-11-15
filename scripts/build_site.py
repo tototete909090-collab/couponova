@@ -38,7 +38,9 @@ def conditions(lang):
 
 def evidence(lang):
     ar = lang == 'ar'
-    items = [('مصدر الدليل', 'فيديو قدمه صاحب الموقع'), ('تاريخ مراجعة الفيديو', REVIEWED), ('تاريخ التصوير والدولة', 'لم يظهرا صراحة؛ غير موثقين'), ('ما ظهر', 'فتح الحملة واستلام قسائم'), ('تطبيق خصم في السلة', 'لم يظهر في الفيديو'), ('الاستخدام العالمي', 'غير متحقق منه')] if ar else [('Evidence source', 'Owner-submitted screen recording'), ('Video review date', REVIEWED), ('Recording date and country', 'Not explicitly shown; unverified'), ('Observed result', 'Campaign opened; coupons received'), ('Coupon applied to cart', 'Not shown in the recording'), ('Worldwide availability', 'Not independently verified')]
+    country_ar = 'السعودية — بحسب تصريح صاحب الموقع؛ إعداد الدولة لم يظهر صراحة في الفيديو' if LISTING.get('country') == 'SA' else 'غير معروف'
+    country_en = 'Saudi Arabia — reported by the owner; the selected country setting was not explicitly shown' if LISTING.get('country') == 'SA' else 'Unknown'
+    items = [('مصدر الدليل', 'فيديوهان قدمهما صاحب الموقع'), ('تاريخ مراجعة الفيديو', REVIEWED), ('بلد التجربة المبلغ عنه', country_ar), ('تاريخ التصوير', 'غير موثق؛ لا نستنتجه من ساعة الجهاز'), ('ما ظهر', 'فتح الحملة واستلام قسائم'), ('تطبيق خصم في السلة', 'لم يظهر في الفيديو'), ('الاستخدام العالمي', 'غير متحقق منه')] if ar else [('Evidence source', 'Two owner-submitted videos'), ('Video review date', REVIEWED), ('Reported test country', country_en), ('Recording date', 'Unverified; not inferred from the device clock'), ('Observed result', 'Campaign opened; coupons received'), ('Coupon applied to cart', 'Not shown in the recording'), ('Worldwide availability', 'Not independently verified')]
     return '<dl class="evidence-grid">' + ''.join(f'<div class="evidence-item"><dt>{escape(key)}</dt><dd>{escape(value)}</dd></div>' for key, value in items) + '</dl>'
 
 
@@ -78,7 +80,7 @@ def faq_values(lang):
             ('أين أكتب S4T32؟', 'اكتبه في شريط البحث داخل تطبيق SHEIN. هذا هو مكان الاستخدام الظاهر في الفيديو، وليس خانة قسيمة الدفع.'),
             ('هل S4T32 يعطي خصمًا ثابتًا 60%؟', 'لا يثبت الفيديو نسبة ثابتة 60% للرمز. ظهرت قسائم منفصلة بشروط ونسب وسقوف، ولم يظهر تطبيقها على السلة.'),
             ('هل القسائم لجميع المستخدمين؟', 'القسيمتان اللتان استطعنا قراءة شروطهما تحملان «مستخدم جديد فقط» و«منتجات مختارة». لا نستنتج من ذلك أهلية حسابك.'),
-            ('هل يعمل في السعودية وبقية الدول؟', 'ظهرت عملة الريال السعودي، لكن الدولة المختارة لم تظهر صراحة. لم نتحقق من التوفر في السعودية أو أي بلد آخر؛ راجع التطبيق بحسابك وبلدك.'),
+            ('هل يعمل في السعودية وبقية الدول؟', 'ذكر صاحب الموقع أن السعودية هي بلد التجربة، وظهرت مبالغ بالريال السعودي. إعداد الدولة لم يظهر صراحة، ولم يظهر تطبيق قسيمة في السلة. لا نضمن التوفر لكل حساب سعودي أو أي بلد آخر؛ راجع الشروط في تطبيقك.'),
             ('هل استلام القسائم يعني تطبيق الخصم؟', 'لا. رسالة «تم الاستلام بنجاح» تعني استلام قسائم في التجربة، ولا تثبت استخدامها عند الدفع أو إتمام شراء.'),
             ('هل Couponova معتمدة من SHEIN؟', 'Couponova موقع مستقل، وليس موقع SHEIN الرسمي ولا يدعي اعتمادًا منها. أسماء العلامات التجارية تعود لأصحابها.')
         ]
@@ -86,7 +88,7 @@ def faq_values(lang):
         ('Where do I enter S4T32?', 'Enter it in the SHEIN app search bar. That is the entry point shown in the video, not the checkout coupon field.'),
         ('Does S4T32 give a fixed 60% discount?', 'The recording does not establish a fixed 60% discount. It showed separate conditional coupons and did not show their application to a cart.'),
         ('Are the observed coupons for everyone?', 'The two readable coupons stated new users only and selected products. Your own account eligibility is not verified.'),
-        ('Does it work in Saudi Arabia and worldwide?', 'Saudi riyal amounts were visible, but the selected country was not explicitly shown. Availability in Saudi Arabia or another country has not been independently verified.'),
+        ('Does it work in Saudi Arabia and worldwide?', 'The owner reports Saudi Arabia as the test country, and Saudi riyal amounts were visible. The country setting and a coupon applied to a cart were not shown. Availability for every Saudi account or another country is not guaranteed.'),
         ('Does receipt of coupons prove a checkout discount?', 'No. The receipt message establishes that coupons were received in that recording, not that they were redeemed or a purchase completed.'),
         ('Is Couponova officially endorsed by SHEIN?', 'Couponova is an independent website, not the official SHEIN website, and does not claim official endorsement.')
     ]
@@ -182,10 +184,10 @@ modified = []
 for lang, route, alternate in [('ar', '', 'en/'), ('en', 'en/', '')]:
     ar = lang == 'ar'
     values = faq_values(lang)
-    title = 'كود خصم شي إن S4T32 | البحث في التطبيق وشروط القسائم' if ar else 'SHEIN S4T32 Code | App Search and Coupon Conditions'
-    heading = 'كود شي إن <span dir="ltr">S4T32</span><br>ابدأ من بحث التطبيق' if ar else 'SHEIN code <span>S4T32</span><br>Start with app search'
-    description = 'طريقة استخدام S4T32 في بحث تطبيق SHEIN وشروط القسائم التي ظهرت في فيديو. نوضح الأهلية والسقف وحدود التحقق، دون ضمان خصم ثابت أو توفر عالمي.' if ar else 'How to use S4T32 in SHEIN app search. See observed coupon conditions, new-user eligibility, discount caps and evidence limits, without a fixed-discount guarantee.'
-    intro = 'تبحث عن كود خصم شي ان؟ انسخ S4T32 وابحث عنه داخل التطبيق. شاهدنا فتح حملة وقسائم بشروط، وليس خصمًا ثابتًا على كل طلب.' if ar else 'Looking for a SHEIN coupon code? Copy S4T32 and search for it in the app. The recording showed a campaign with conditional coupons, not a fixed discount on every order.'
+    title = 'كود خصم شي إن السعودية S4T32 | طريقة البحث وشروط القسائم' if ar else 'SHEIN S4T32 Code | App Search and Coupon Conditions'
+    heading = 'كود خصم شي إن السعودية<br>رمز البحث <span dir="ltr">S4T32</span>' if ar else 'SHEIN code <span>S4T32</span><br>Start with app search'
+    description = 'دليل كود خصم شي إن السعودية S4T32: البحث داخل التطبيق وشروط القسائم التي ظهرت في الفيديو، مع الأهلية وسقف الخصم وحدود التحقق دون ضمان خصم ثابت.' if ar else 'How to use S4T32 in SHEIN app search. See observed coupon conditions, new-user eligibility, discount caps and evidence limits, without a fixed-discount guarantee.'
+    intro = 'تبحث عن كوبون شي ان في السعودية؟ انسخ S4T32 وابحث عنه داخل التطبيق. يذكر صاحب الموقع السعودية بلدًا للتجربة؛ شاهدنا حملة وقسائم بشروط، وليس خصمًا ثابتًا على كل طلب.' if ar else 'Looking for a SHEIN coupon code? Copy S4T32 and search for it in the app. The recording showed a campaign with conditional coupons, not a fixed discount on every order.'
     form = f'''<form class="search-form" role="search"><label class="sr-only" for="code-search">{'ابحث داخل بطاقة الرمز' if ar else 'Search the code information'}</label><input id="code-search" type="search" data-coupon-search placeholder="{'ابحث عن S4T32 أو شروط القسائم' if ar else 'Search S4T32 or coupon conditions'}"><button class="button" type="submit">{'بحث' if ar else 'Search'}</button></form><p class="empty-message" data-empty hidden>{'لا توجد نتيجة مطابقة. الرمز المعروض حاليًا هو S4T32.' if ar else 'No matching result. The currently featured code is S4T32.'}</p>'''
     content = section('conditions', 'شروط القسائم التي ظهرت في الفيديو' if ar else 'Coupon conditions observed in the video', conditions(lang))
     content += section('how', 'طريقة استخدام S4T32' if ar else 'How to use S4T32', steps(lang))
@@ -230,7 +232,7 @@ modified.append(page('shein/how-to-use/', 'ar', 'طريقة استخدام S4T32
 
 intro = 'نفصل بين فتح حملة، واستلام قسيمة، وتطبيق خصم في السلة، وإتمام شراء. لكل ادعاء مستوى دليل مختلف.'
 content = section('verification', 'مستويات التحقق', '<p><strong>فتح حملة مشاهد:</strong> يظهر إدخال رمز البحث وفتح الحملة في تسجيل. لا يعني خصمًا مؤكدًا في السلة.</p><p><strong>استلام قسيمة مشاهد:</strong> تظهر رسالة الاستلام وشروط القسيمة. لا يثبت ذلك استردادها عند الدفع.</p><p><strong>خصم سلة موثق:</strong> يحتاج ملخصًا يبين مبلغ خصم القسيمة وشروط التجربة. هذا لم يظهر في فيديو S4T32 الحالي.</p><p><strong>غير متحقق:</strong> ما لا تدعمه تجربة أو مصدر واضح لا يوصف بأنه مضمون. لا نضمن التوفر لكل حساب أو بلد.</p>')
-content += section('records', 'ما نسجله؟', '<p>نسجل مصدر الدليل وتاريخ مراجعته، ونفصل ذلك عن تاريخ التصوير والتجربة. إذا لم تظهر الدولة أو أهلية الحساب أو التاريخ، نسجلها غير معروفة. نسجل النسبة والحد الأدنى وسقف الخصم والمنتجات والصلاحية كما ظهرت، لا كما نتمنى أن تكون.</p>')
+content += section('records', 'ما نسجله؟', '<p>نسجل مصدر الدليل وتاريخ مراجعته، ونفصل ذلك عن تاريخ التصوير والتجربة. نميز بين الدولة الظاهرة في التطبيق والدولة التي يذكرها صاحب التجربة، ولا نضع تاريخًا لم نستطع توثيقه. نسجل النسبة والحد الأدنى وسقف الخصم والمنتجات والصلاحية كما ظهرت، لا كما نتمنى أن تكون.</p>')
 content += section('current', 'الدليل الحالي لـS4T32', evidence('ar') + '<p>القسائم المرصودة بشروطها موضحة في ' + link('shein/new-user-code/', 'صفحة المستخدم الجديد') + '. لا نوصفها بأنها متوفرة الآن دون إعادة تحقق.</p>')
 content += section('privacy', 'الخصوصية والتصحيح', '<p>لا ننشر الفيديو الأصلي أو بيانات الحساب والطلب والدفع. يمكن تقديم دليل منقح لمراجعته، ويجب عدم إرسال البيانات الحساسة في بلاغات GitHub العامة.</p><p>نراجع المعلومات عند توفر دليل جديد أو بلاغ، ونصحح الحالة دون تحويل تاريخ تعديل الصفحة إلى تاريخ اختبار. لا نستنتج اعتماد SHEIN أو شراكة أو عمولة من مجرد ظهور الكود.</p><p>' + link('contact/', 'إرسال ملاحظة أو بلاغ') + '</p>')
 modified.append(page('editorial-policy/', 'ar', 'سياسة التحرير والتحقق من الرموز والقسائم | Couponova', intro, 'سياسة التحرير والتحقق', intro, content))

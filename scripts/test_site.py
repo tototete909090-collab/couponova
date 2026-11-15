@@ -114,7 +114,9 @@ assert data['primaryCode'] == 'S4T32'
 assert [c['code'] for c in data['coupons'] if c['published']] == ['S4T32']
 c = data['coupons'][0]
 assert c['type'] == 'app_search_campaign' and c['displayedDiscount'] is None
-assert c['testedAt'] is None and c['country'] is None
+assert c['testedAt'] is None and not c['recordingDateVerified']
+assert c['country'] == 'SA' and c['countrySource'] == 'site_owner_statement'
+assert not c['countrySelectionShownInVideo'] and data['primaryMarket'] == 'SA'
 assert not c['checkoutDiscountVerified'] and not c['worldwideAvailabilityVerified']
 assert [(v['discountPercent'], v['minimumSpend'], v['maximumDiscount']) for v in c['observedCoupons']] == [(50,79,40),(40,179,80)]
 assert all(v['minimumSpendOperator'] == '>' and v['expiresAt'] is None and not v['currentlyAvailableVerified'] for v in c['observedCoupons'])
