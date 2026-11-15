@@ -1,27 +1,27 @@
 # Couponova
 
-> Couponova is an independent global Arabic and English website that lists SHEIN coupon codes and explains their conditions and verification status.
+> An independent Arabic and English guide to SHEIN app search code S4T32 and observed coupon conditions. No official SHEIN endorsement is claimed.
 
-## Canonical pages
+## Public pages
 
 - Arabic home: https://tototete909090-collab.github.io/couponova/
-- Arabic SHEIN coupon page: https://tototete909090-collab.github.io/couponova/shein/
-- Arabic SHEIN usage guide: https://tototete909090-collab.github.io/couponova/shein/how-to-use/
-- Arabic SHEIN new-user codes: https://tototete909090-collab.github.io/couponova/shein/new-user-code/
-- About Couponova: https://tototete909090-collab.github.io/couponova/about/
-- Editorial policy: https://tototete909090-collab.github.io/couponova/editorial-policy/
-- Contact and issue reporting: https://tototete909090-collab.github.io/couponova/contact/
+- S4T32 details: https://tototete909090-collab.github.io/couponova/shein/
+- App search and coupon usage guide: https://tototete909090-collab.github.io/couponova/shein/how-to-use/
+- Observed new-user coupon conditions: https://tototete909090-collab.github.io/couponova/shein/new-user-code/
 - English home: https://tototete909090-collab.github.io/couponova/en/
-- English SHEIN coupon page: https://tototete909090-collab.github.io/couponova/en/shein/
+- English S4T32 details: https://tototete909090-collab.github.io/couponova/en/shein/
+- About: https://tototete909090-collab.github.io/couponova/about/
+- Editorial and evidence policy: https://tototete909090-collab.github.io/couponova/editorial-policy/
+- Contact: https://tototete909090-collab.github.io/couponova/contact/
 
-## Data and trust
+## Evidence and limits
 
-- Couponova is not owned by, operated by, or officially endorsed by SHEIN.
-- The listed codes are user-submitted/site-owner listings unless a page explicitly states otherwise.
-- The current Arabic listings are S4T32 (listed discount: 60%) and H3RAW (listed discount: 47%). Both were tested and marked as working on 2026-11-14; eligibility can still vary.
-- The site targets users worldwide; discount eligibility may still vary by account, currency, products, minimum order, local campaign rules, and store terms.
-- The checkout total shown by SHEIN is the final authority on whether a coupon applies.
+An owner-submitted video reviewed on 2026-11-15 showed s4t32 entered in SHEIN app search, opening WELCOME TO SHEIN and a coupon receipt message. It did not show a discount applied to a cart or a completed purchase. The recording date and selected country were not explicitly shown. Saudi riyal amounts were visible.
 
-## Topics
+Two readable coupons in that recording offered 50% on orders more than SAR 79, capped at SAR 40; and 40% on orders more than SAR 179, capped at SAR 80. Both stated new users only and selected products, with one day remaining at recording. These are observed, time-limited coupons, not guaranteed current offers or a fixed percentage discount from S4T32.
 
-كود خصم شي ان, كوبون شي ان, رمز خصم SHEIN, SHEIN coupon code, SHEIN promo code
+Worldwide availability and account eligibility are not independently verified. Use S4T32 in the app search bar; check the coupons currently available in your own account and the final order summary before payment. The website's official-store link is a homepage link, not automatic code activation or a campaign deep link.
+
+H3RAW is not promoted by Couponova in this version. The original video and private account information are not published.
+
+This file is informational only and does not guarantee indexing, rankings or inclusion in AI answers.

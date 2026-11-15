@@ -1,33 +1,64 @@
 {
+  "schemaVersion": 2,
   "store": "SHEIN",
-  "coverage": "global",
-  "lastReviewed": "2026-11-14",
-  "verificationPolicy": "تم اختبار الأكواد وأكد صاحب الموقع فعاليتها عند آخر مراجعة. الأكواد موجهة للاستخدام العالمي، لكن قد تختلف الأهلية حسب الحساب والعملة والمنتجات وشروط SHEIN المحلية.",
-  "disclaimer": "الأكواد مجرّبة عند آخر مراجعة وليست ضماناً لاستمرار العرض في كل حساب أو سوق. تحقق من ظهور الخصم في ملخص الطلب قبل الدفع.",
+  "primaryCode": "S4T32",
+  "lastReviewed": "2026-11-15",
+  "coverage": "not_independently_verified_by_country",
+  "verificationPolicy": "تمت مراجعة فيديو قدمه صاحب الموقع. يثبت فتح حملة من بحث تطبيق SHEIN وظهور استلام قسائم بشروط، ولا يثبت تطبيق خصم في السلة أو نجاح الشراء أو الصلاحية العالمية.",
   "coupons": [
     {
       "code": "S4T32",
-      "displayedDiscount": "60%",
-      "status": "verified_working",
-      "source": "site_owner_test",
-      "verifiedAt": "2026-11-14",
-      "verificationMethod": "اختبار مباشر عند إتمام الطلب",
-      "availability": "عالمي — غير مقيّد بدولة محددة في بيانات الموقع",
-      "minimumSpend": "غير محدد",
-      "expires": null,
-      "audience": "جميع المستخدمين بحسب شروط الحملة والحساب"
-    },
+      "published": true,
+      "type": "app_search_campaign",
+      "entryPoint": "SHEIN app search",
+      "destination": "https://www.shein.com/",
+      "destinationType": "official_store_home_not_campaign_deep_link",
+      "displayedDiscount": null,
+      "status": "campaign_opening_observed",
+      "source": "site_owner_submitted_video",
+      "evidenceReviewedAt": "2026-11-15",
+      "testedAt": null,
+      "country": null,
+      "currencyObserved": "SAR",
+      "accountEligibilityVerified": null,
+      "checkoutDiscountVerified": false,
+      "purchaseVerified": false,
+      "worldwideAvailabilityVerified": false,
+      "observedResult": "S4T32 ظهر في شريط بحث التطبيق، ثم فتحت صفحة WELCOME TO SHEIN وظهرت رسالة تم الاستلام بنجاح مع قسائم للمستخدم الجديد ومنتجات مختارة.",
+      "observedCoupons": [
+        {
+          "discountPercent": 50,
+          "minimumSpend": 79,
+          "minimumSpendOperator": ">",
+          "maximumDiscount": 40,
+          "currency": "SAR",
+          "audience": "new_users_only",
+          "products": "selected_products_only",
+          "expirationObserved": "one_day_remaining_at_recording",
+          "expiresAt": null,
+          "currentlyAvailableVerified": false
+        },
+        {
+          "discountPercent": 40,
+          "minimumSpend": 179,
+          "minimumSpendOperator": ">",
+          "maximumDiscount": 80,
+          "currency": "SAR",
+          "audience": "new_users_only",
+          "products": "selected_products_only",
+          "expirationObserved": "one_day_remaining_at_recording",
+          "expiresAt": null,
+          "currentlyAvailableVerified": false
+        }
+      ],
+      "disclaimer": "هذه القسائم ظهرت في الفيديو فقط؛ ليست نسبة ثابتة للكود ولا ضمانًا لتوفرها الآن أو لكل حساب أو بلد. راجع القسائم والشروط في حسابك وتحقق من الخصم في ملخص الطلب قبل الدفع."
+    }
+  ],
+  "inactiveCodes": [
     {
       "code": "H3RAW",
-      "displayedDiscount": "47%",
-      "status": "verified_working",
-      "source": "site_owner_test",
-      "verifiedAt": "2026-11-14",
-      "verificationMethod": "اختبار مباشر عند إتمام الطلب",
-      "availability": "عالمي — غير مقيّد بدولة محددة في بيانات الموقع",
-      "minimumSpend": "غير محدد",
-      "expires": null,
-      "audience": "جميع المستخدمين بحسب شروط الحملة والحساب"
+      "published": false,
+      "reason": "أوقف صاحب الموقع الترويج لهذا الكود في Couponova. لا يوجد دليل فيديو لهذا الرمز ضمن المرفق الحالي."
     }
   ]
 }

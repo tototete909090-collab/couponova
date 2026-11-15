@@ -1,0 +1,285 @@
+.home-page {
+  color-scheme: light;
+  --text: #111111;
+  --muted: #5f5f5f;
+  --line: #e3e3df;
+  background: #f7f7f5;
+  color: #111111;
+  font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+.home-page .site-header {
+  background: rgba(255, 255, 255, 0.97);
+  color: #111111;
+  border-color: #e3e3df;
+}
+
+.home-page .logo {
+  letter-spacing: -0.5px;
+}
+
+.home-page .logo-mark {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+.home-page .nav-links {
+  color: #444444;
+}
+
+.home-page .nav-links a:hover,
+.home-page .text-link:hover {
+  color: #b82150;
+}
+
+.home-page .language-link {
+  border-color: #cccccc;
+  background: #ffffff;
+}
+
+.home-page .hero {
+  padding: 32px 0 36px;
+  background: #111111;
+  color: #ffffff;
+  text-align: center;
+}
+
+.home-page .eyebrow {
+  margin: 0;
+  border-color: #9b3b58;
+  color: #ffa5bf;
+  background: #25151b;
+}
+
+.home-page .hero h1 {
+  font-size: clamp(30px, 4.5vw, 48px);
+  line-height: 1.22;
+  letter-spacing: -0.8px;
+  margin: 14px auto 12px;
+}
+
+.home-page .hero h1 span {
+  color: #ff8cab;
+}
+
+.home-page .hero-description {
+  max-width: 720px;
+  font-size: 16px;
+  color: #dddddd;
+}
+
+.home-page .campaign-card {
+  max-width: 760px;
+  margin: 22px auto 0;
+  padding: 22px;
+  background: #ffffff;
+  color: #111111;
+  border: 1px solid #e3e3df;
+  border-top: 4px solid #cf2458;
+  border-radius: 20px;
+  text-align: start;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+}
+
+.home-page .campaign-card h2 {
+  font-size: 23px;
+  margin: 12px 0;
+  line-height: 1.4;
+}
+
+.home-page .coupon-label {
+  background: #fff0f4;
+  color: #8d2141;
+  border-color: #efcad6;
+}
+
+.home-page .coupon-code-box {
+  background: #f7f7f7;
+  border-color: #bdbdbd;
+}
+
+.home-page .coupon-code {
+  color: #111111;
+  font-size: 32px;
+}
+
+.home-page .button {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+.home-page .button:hover {
+  background: #333333;
+}
+
+.home-page .button-secondary {
+  background: #b82150;
+  border-color: #b82150;
+  color: #ffffff;
+}
+
+.home-page .button-secondary:hover {
+  background: #97183e;
+}
+
+.home-page .code-instruction {
+  padding: 10px 12px;
+  color: #444444;
+  background: #f4f4f2;
+  border-color: #e5e5e1;
+  font-size: 14px;
+}
+
+.home-page .observed-note {
+  margin-bottom: 0;
+  padding: 12px;
+  font-size: 13px;
+  color: #74243d;
+  background: #fff0f4;
+  border-color: #efcad6;
+}
+
+.home-page .section {
+  padding: 34px 0;
+}
+
+.home-page .section h2 {
+  font-size: clamp(23px, 3vw, 30px);
+  margin: 0 0 18px;
+  line-height: 1.4;
+}
+
+.home-page .terms-table {
+  background: #ffffff;
+  color: #222222;
+  border-color: #deded9;
+}
+
+.home-page .terms-table caption {
+  color: #555555;
+}
+
+.home-page .terms-table th {
+  background: #f0efec;
+  color: #333333;
+}
+
+.home-page .terms-table td,
+.home-page .terms-table th {
+  border-color: #deded9;
+}
+
+.home-page .evidence-item,
+.home-page .faq-list details {
+  background: #ffffff;
+  border: 1px solid #e3e3df;
+}
+
+.home-page .evidence-item dt {
+  color: #5f5f5f;
+}
+
+.home-page .use-steps {
+  background: #ffffff;
+  border: 1px solid #e3e3df;
+  border-radius: 16px;
+  padding-block: 16px;
+  padding-inline: 40px 20px;
+}
+
+.home-page .use-steps li {
+  padding: 8px 0;
+}
+
+.home-page .use-steps p {
+  margin: 4px 0;
+  color: #555555;
+}
+
+.home-page .faq-list {
+  display: grid;
+  gap: 10px;
+}
+
+.home-page .faq-list details {
+  padding: 15px 18px;
+  border-radius: 13px;
+}
+
+.home-page summary {
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.home-page .faq-list p {
+  color: #555555;
+}
+
+.home-page .search-form {
+  background: #ffffff;
+  border-color: #cccccc;
+  margin-top: 0;
+}
+
+.home-page .search-form input {
+  color: #111111;
+}
+
+.home-page .site-footer {
+  background: #111111;
+  color: #dddddd;
+}
+
+.home-page .site-footer .text-link {
+  color: #dddddd;
+}
+
+.home-page .empty-message {
+  border-color: #cccccc;
+}
+
+@media (max-width: 760px) {
+  .home-page .navbar {
+    gap: 6px 14px;
+    padding-block: 10px;
+  }
+
+  .home-page .nav-links {
+    gap: 4px 12px;
+    justify-content: center;
+    font-size: 12px;
+  }
+
+  .home-page .hero {
+    padding: 22px 0 26px;
+  }
+
+  .home-page .campaign-card {
+    margin-top: 16px;
+    padding: 17px;
+  }
+
+  .home-page .hero-description {
+    font-size: 14px;
+  }
+
+  .home-page .campaign-card h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 760px) {
+  .home-page .nav-links {
+    gap: 4px 8px;
+  }
+
+  .home-page .nav-links .language-link {
+    padding-inline: 8px;
+  }
+}
+
+.home-page .campaign-card .code-actions {
+  margin-top: 14px;
+}
