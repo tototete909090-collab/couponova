@@ -13,6 +13,7 @@ LISTING = next(item for item in DATA['coupons'] if item['code'] == DATA['primary
 CODE = escape(LISTING['code'])
 REVIEWED = DATA['lastReviewed']
 DESTINATION = escape(LISTING['destination'], quote=True)
+DATE_EVIDENCE = LISTING.get('dateEvidence', {})
 
 
 def link(route, text, classes='text-link'):
@@ -40,14 +41,27 @@ def evidence(lang):
     ar = lang == 'ar'
     country_ar = 'السعودية — بحسب تصريح صاحب الموقع؛ إعداد الدولة لم يظهر صراحة في الفيديو' if LISTING.get('country') == 'SA' else 'غير معروف'
     country_en = 'Saudi Arabia — reported by the owner; the selected country setting was not explicitly shown' if LISTING.get('country') == 'SA' else 'Unknown'
-    items = [('مصدر الدليل', 'فيديوهان قدمهما صاحب الموقع'), ('تاريخ مراجعة الفيديو', REVIEWED), ('بلد التجربة المبلغ عنه', country_ar), ('تاريخ التصوير', 'غير موثق؛ لا نستنتجه من ساعة الجهاز'), ('ما ظهر', 'فتح الحملة واستلام قسائم'), ('تطبيق خصم في السلة', 'لم يظهر في الفيديو'), ('الاستخدام العالمي', 'غير متحقق منه')] if ar else [('Evidence source', 'Two owner-submitted videos'), ('Video review date', REVIEWED), ('Reported test country', country_en), ('Recording date', 'Unverified; not inferred from the device clock'), ('Observed result', 'Campaign opened; coupons received'), ('Coupon applied to cart', 'Not shown in the recording'), ('Worldwide availability', 'Not independently verified')]
-    return '<dl class="evidence-grid">' + ''.join(f'<div class="evidence-item"><dt>{escape(key)}</dt><dd>{escape(value)}</dd></div>' for key, value in items) + '</dl>'
+    reported_date = str(DATE_EVIDENCE.get('reportedTestDate', 'غير محدد'))
+    displayed_time = str(DATE_EVIDENCE.get('displayedTime', '4:51'))
+    visible_day_month = str(DATE_EVIDENCE.get('visibleGregorianDayMonth', '15 November'))
+    visible_day_month_ar = visible_day_month.replace('November', 'نوفمبر')
+    image_path = PATH + str(DATE_EVIDENCE.get('imagePath', ''))
+    image_width = str(DATE_EVIDENCE.get('imageWidth', 768))
+    image_height = str(DATE_EVIDENCE.get('imageHeight', 1365))
+    date_note_ar = f'{reported_date} — الوقت الظاهر {displayed_time}. هذا التاريخ والوقت مقدمان من صاحب الموقع مع لقطة ساعة منفصلة، ولا يربطانها بفيديو اختبار الرمز ولا يثبتان نجاح خصم السلة.'
+    date_note_en = f'{reported_date} — displayed time {displayed_time}. The date and time were supplied by the owner with a separate clock screenshot; they do not link it to the code test video or prove a checkout discount.'
+    items = [('مصدر الدليل', 'فيديوهان قدمهما صاحب الموقع'), ('تاريخ مراجعة الفيديو', REVIEWED), ('بلد التجربة المبلغ عنه', country_ar), ('تاريخ التجربة المبلغ عنه', date_note_ar), ('تاريخ التصوير', 'غير موثق؛ لا نستنتجه من ساعة الجهاز'), ('ما ظهر', 'فتح الحملة واستلام قسائم'), ('تطبيق خصم في السلة', 'لم يظهر في الفيديو'), ('الاستخدام العالمي', 'غير متحقق منه')] if ar else [('Evidence source', 'Two owner-submitted videos'), ('Video review date', REVIEWED), ('Reported test country', country_en), ('Reported test date', date_note_en), ('Recording date', 'Unverified; not inferred from the device clock'), ('Observed result', 'Campaign opened; coupons received'), ('Coupon applied to cart', 'Not shown in the recording'), ('Worldwide availability', 'Not independently verified')]
+    disclosure = ('ملخص عرض لقطة الساعة' if ar else 'View date screenshot')
+    alt = f'ساعة الهاتف تعرض {visible_day_month_ar} عند {displayed_time}؛ ليست صفحة دفع' if ar else f'Phone clock showing {visible_day_month} at {displayed_time}; not a checkout page'
+    caption = ('لقطة الساعة مقدمة من صاحب الموقع، بلا بيانات التقاط موثوقة، ولا تتحقق من نجاح الدفع.' if ar else 'Screenshot supplied by the owner, without trusted capture metadata, and it does not verify payment success.')
+    proof = f'<details class="proof-disclosure"><summary>{disclosure}</summary><figure class="proof-figure"><img width="{escape(image_width, quote=True)}" height="{escape(image_height, quote=True)}" src="{escape(image_path, quote=True)}" loading="lazy" decoding="async" alt="{escape(alt, quote=True)}"><figcaption class="proof-caption">{caption}</figcaption></figure></details>'
+    return '<dl class="evidence-grid">' + ''.join(f'<div class="evidence-item"><dt>{escape(key)}</dt><dd>{escape(value)}</dd></div>' for key, value in items) + '</dl>' + proof
 
 
 def card(lang, compact=False):
     ar = lang == 'ar'
     badge = 'رمز بحث داخل التطبيق' if ar else 'App search campaign code'
-    heading = f'ابحث عن {CODE} في تطبيق SHEIN' if ar else f'Search for {CODE} in the SHEIN app'
+    heading = 'ابحث عن الرمز في تطبيق SHEIN' if ar else 'Search for the code in the SHEIN app'
     copy = 'نسخ الرمز' if ar else 'Copy code'
     visit = 'زيارة SHEIN الرسمية' if ar else 'Visit official SHEIN'
     instruction = 'افتح التطبيق والصق الرمز في شريط البحث. لا نوصي بإدخاله في خانة القسيمة بناءً على هذا الدليل.' if ar else 'Open the app and paste the code into its search bar. The recording does not establish that this is a checkout coupon code.'
@@ -70,7 +84,7 @@ def card(lang, compact=False):
 
 def steps(lang):
     ar = lang == 'ar'
-    values = [('انسخ S4T32', 'اضغط زر نسخ الرمز أو انسخه يدويًا.'), ('ابحث داخل التطبيق', 'افتح تطبيق SHEIN والصق S4T32 في شريط البحث ثم نفذ البحث.'), ('راجع القسائم', 'إذا ظهرت الحملة، اقرأ القسائم المتاحة لحسابك والأهلية والسقف والصلاحية.'), ('تحقق قبل الدفع', 'استخدم القسيمة المؤهلة وفق تعليماتها، وتأكد من ظهور مبلغ خصمها في ملخص الطلب.')] if ar else [('Copy S4T32', 'Use the copy button or copy the code manually.'), ('Search in the app', 'Open the SHEIN app, paste S4T32 into the search bar and search.'), ('Read coupon conditions', 'If a campaign appears, check the coupons available to your account, eligibility, caps and expiry.'), ('Check before payment', 'Use an eligible coupon according to its instructions and confirm its separate deduction in the order summary.')]
+    values = [('انسخ الرمز', 'اضغط زر نسخ الرمز أو انسخه يدويًا.'), ('ابحث داخل التطبيق', 'افتح تطبيق SHEIN والصق الرمز في شريط البحث ثم نفذ البحث.'), ('راجع القسائم', 'إذا ظهرت الحملة، اقرأ القسائم المتاحة لحسابك والأهلية والسقف والصلاحية.'), ('تحقق قبل الدفع', 'استخدم القسيمة المؤهلة وفق تعليماتها، وتأكد من ظهور مبلغ خصمها في ملخص الطلب.')] if ar else [('Copy the code', 'Use the copy button or copy the code manually.'), ('Search in the app', 'Open the SHEIN app, paste the code into the search bar and search.'), ('Read coupon conditions', 'If a campaign appears, check the coupons available to your account, eligibility, caps and expiry.'), ('Check before payment', 'Use an eligible coupon according to its instructions and confirm its separate deduction in the order summary.')]
     return '<ol class="use-steps">' + ''.join(f'<li><strong>{escape(title)}</strong><p>{escape(text)}</p></li>' for title, text in values) + '</ol>'
 
 
@@ -78,7 +92,7 @@ def faq_values(lang):
     if lang == 'ar':
         return [
             ('أين أكتب S4T32؟', 'اكتبه في شريط البحث داخل تطبيق SHEIN. هذا هو مكان الاستخدام الظاهر في الفيديو، وليس خانة قسيمة الدفع.'),
-            ('هل S4T32 يعطي خصمًا ثابتًا 60%؟', 'لا يثبت الفيديو نسبة ثابتة 60% للرمز. ظهرت قسائم منفصلة بشروط ونسب وسقوف، ولم يظهر تطبيقها على السلة.'),
+            ('ما قيمة الخصم المضمون؟', 'لا يثبت الفيديو نسبة خصم ثابتة. ظهرت قسائم منفصلة بشروط ونسب وسقوف، ولم يظهر تطبيقها على السلة.'),
             ('هل القسائم لجميع المستخدمين؟', 'القسيمتان اللتان استطعنا قراءة شروطهما تحملان «مستخدم جديد فقط» و«منتجات مختارة». لا نستنتج من ذلك أهلية حسابك.'),
             ('هل يعمل في السعودية وبقية الدول؟', 'ذكر صاحب الموقع أن السعودية هي بلد التجربة، وظهرت مبالغ بالريال السعودي. إعداد الدولة لم يظهر صراحة، ولم يظهر تطبيق قسيمة في السلة. لا نضمن التوفر لكل حساب سعودي أو أي بلد آخر؛ راجع الشروط في تطبيقك.'),
             ('هل استلام القسائم يعني تطبيق الخصم؟', 'لا. رسالة «تم الاستلام بنجاح» تعني استلام قسائم في التجربة، ولا تثبت استخدامها عند الدفع أو إتمام شراء.'),
@@ -86,7 +100,7 @@ def faq_values(lang):
         ]
     return [
         ('Where do I enter S4T32?', 'Enter it in the SHEIN app search bar. That is the entry point shown in the video, not the checkout coupon field.'),
-        ('Does S4T32 give a fixed 60% discount?', 'The recording does not establish a fixed 60% discount. It showed separate conditional coupons and did not show their application to a cart.'),
+        ('What guaranteed discount applies?', 'The recording does not establish a fixed discount. It showed separate conditional coupons and did not show their application to a cart.'),
         ('Are the observed coupons for everyone?', 'The two readable coupons stated new users only and selected products. Your own account eligibility is not verified.'),
         ('Does it work in Saudi Arabia and worldwide?', 'The owner reports Saudi Arabia as the test country, and Saudi riyal amounts were visible. The country setting and a coupon applied to a cart were not shown. Availability for every Saudi account or another country is not guaranteed.'),
         ('Does receipt of coupons prove a checkout discount?', 'No. The receipt message establishes that coupons were received in that recording, not that they were redeemed or a purchase completed.'),
@@ -113,7 +127,7 @@ def page(route, lang, title, description, heading, intro, content, alternate=Non
     if alternate is not None:
         hreflang['en' if ar else 'ar'] = BASE + alternate
     alternates = '\n'.join(f'  <link rel="alternate" hreflang="{language}" href="{target}">' for language, target in hreflang.items())
-    nav = [('الرئيسية', ''), ('S4T32', 'shein/'), ('طريقة الاستخدام', 'shein/how-to-use/'), ('المستخدم الجديد', 'shein/new-user-code/')] if ar else [('Home', 'en/'), ('S4T32', 'en/shein/')]
+    nav = [('الرئيسية', ''), ('تفاصيل شي إن', 'shein/'), ('طريقة الاستخدام', 'shein/how-to-use/'), ('المستخدم الجديد', 'shein/new-user-code/')] if ar else [('Home', 'en/'), ('Code details', 'en/shein/')]
     nav_markup = ''.join(f'<a href="{PATH}{target}"' + (' aria-current="page"' if target == route else '') + f'>{label}</a>' for label, target in nav)
     if alternate is not None:
         nav_markup += f'<a class="language-link" href="{PATH}{alternate}" lang="{"en" if ar else "ar"}">{"English" if ar else "العربية"}</a>'
@@ -169,7 +183,7 @@ def page(route, lang, title, description, heading, intro, content, alternate=Non
   <section class="hero"><div class="container"><p class="eyebrow">COUPONOVA · SHEIN</p><h1>{heading}</h1><p class="hero-description">{intro}</p>{hero_card}</div></section>
   {content}
 </main>
-<footer class="site-footer"><div class="container"><div class="footer-row"><strong>Couponova</strong><nav class="footer-links" aria-label="{'روابط الموقع' if ar else 'Site links'}">{footer_links}{link(store, 'S4T32')}</nav></div><p class="small-text">{independent}</p><p class="small-text">© <span data-year>2026</span> Couponova</p></div></footer>
+<footer class="site-footer"><div class="container"><div class="footer-row"><strong>Couponova</strong><nav class="footer-links" aria-label="{'روابط الموقع' if ar else 'Site links'}">{footer_links}{link(store, 'تفاصيل شي إن' if ar else 'Code details')}</nav></div><p class="small-text">{independent}</p><p class="small-text">© <span data-year>2026</span> Couponova</p></div></footer>
 </body>
 </html>
 '''
@@ -187,13 +201,13 @@ for lang, route, alternate in [('ar', '', 'en/'), ('en', 'en/', '')]:
     title = 'كود خصم شي إن السعودية S4T32 | طريقة البحث وشروط القسائم' if ar else 'SHEIN S4T32 Code | App Search and Coupon Conditions'
     heading = 'كود خصم شي إن السعودية<br>رمز البحث <span dir="ltr">S4T32</span>' if ar else 'SHEIN code <span>S4T32</span><br>Start with app search'
     description = 'دليل كود خصم شي إن السعودية S4T32: البحث داخل التطبيق وشروط القسائم التي ظهرت في الفيديو، مع الأهلية وسقف الخصم وحدود التحقق دون ضمان خصم ثابت.' if ar else 'How to use S4T32 in SHEIN app search. See observed coupon conditions, new-user eligibility, discount caps and evidence limits, without a fixed-discount guarantee.'
-    intro = 'تبحث عن كوبون شي ان في السعودية؟ انسخ S4T32 وابحث عنه داخل التطبيق. يذكر صاحب الموقع السعودية بلدًا للتجربة؛ شاهدنا حملة وقسائم بشروط، وليس خصمًا ثابتًا على كل طلب.' if ar else 'Looking for a SHEIN coupon code? Copy S4T32 and search for it in the app. The recording showed a campaign with conditional coupons, not a fixed discount on every order.'
-    form = f'''<form class="search-form" role="search"><label class="sr-only" for="code-search">{'ابحث داخل بطاقة الرمز' if ar else 'Search the code information'}</label><input id="code-search" type="search" data-coupon-search placeholder="{'ابحث عن S4T32 أو شروط القسائم' if ar else 'Search S4T32 or coupon conditions'}"><button class="button" type="submit">{'بحث' if ar else 'Search'}</button></form><p class="empty-message" data-empty hidden>{'لا توجد نتيجة مطابقة. الرمز المعروض حاليًا هو S4T32.' if ar else 'No matching result. The currently featured code is S4T32.'}</p>'''
+    intro = 'تبحث عن كوبون شي إن في السعودية؟ ابحث عن الرمز داخل التطبيق. يذكر صاحب الموقع السعودية بلدًا للتجربة؛ شاهدنا حملة وقسائم بشروط، وليس خصمًا ثابتًا على كل طلب.' if ar else 'Looking for a SHEIN coupon code? Search for the code in the app. The recording showed a campaign with conditional coupons, not a fixed discount on every order.'
+    form = f'''<form class="search-form" role="search"><label class="sr-only" for="code-search">{'ابحث داخل بطاقة الرمز' if ar else 'Search the code information'}</label><input id="code-search" type="search" data-coupon-search placeholder="{'ابحث عن شروط القسائم' if ar else 'Search coupon conditions'}"><button class="button" type="submit">{'بحث' if ar else 'Search'}</button></form><p class="empty-message" data-empty hidden>{'لا توجد نتيجة مطابقة للمعلومات المتاحة.' if ar else 'No matching information was found.'}</p>'''
     content = section('conditions', 'شروط القسائم التي ظهرت في الفيديو' if ar else 'Coupon conditions observed in the video', conditions(lang))
-    content += section('how', 'طريقة استخدام S4T32' if ar else 'How to use S4T32', steps(lang))
+    content += section('how', 'طريقة استخدام الرمز' if ar else 'How to use the code', steps(lang))
     content += section('evidence', 'ما الذي تحققنا منه؟' if ar else 'What did we verify?', evidence(lang))
     content += section('search', 'العثور على معلومات الرمز' if ar else 'Find code information', form)
-    content += section('guides', 'تفاصيل تساعدك قبل الاستخدام' if ar else 'Details to read before use', '<p>' + link('shein/' if ar else 'en/shein/', 'تفاصيل رمز S4T32' if ar else 'S4T32 campaign details') + '</p><p>' + link('shein/how-to-use/', 'دليل الاستخدام وأسباب عدم ظهور الحملة' if ar else 'Usage guide in Arabic') + '</p><p>' + link('shein/new-user-code/', 'شروط قسائم المستخدم الجديد' if ar else 'New-user coupon conditions in Arabic') + '</p>')
+    content += section('guides', 'تفاصيل تساعدك قبل الاستخدام' if ar else 'Details to read before use', '<p>' + link('shein/' if ar else 'en/shein/', 'تفاصيل رمز بحث شيان' if ar else 'Code details') + '</p><p>' + link('shein/how-to-use/', 'دليل الاستخدام وأسباب عدم ظهور الحملة' if ar else 'Usage guide in Arabic') + '</p><p>' + link('shein/new-user-code/', 'شروط قسائم المستخدم الجديد' if ar else 'New-user coupon conditions in Arabic') + '</p>')
     content += section('faq', 'أسئلة شائعة' if ar else 'Frequently asked questions', faq_html(values))
     modified.append(page(route, lang, title, description, heading, intro, content, alternate, homepage=True, faqs=values))
 
@@ -201,17 +215,17 @@ for lang, route, alternate in [('ar', 'shein/', 'en/shein/'), ('en', 'en/shein/'
     ar = lang == 'ar'
     title = 'S4T32: رمز بحث شي إن وشروط القسائم | Couponova' if ar else 'S4T32 SHEIN Search Code and Observed Coupons | Couponova'
     heading = 'S4T32: رمز بحث شي إن، لا خصم ثابت مضمون' if ar else 'S4T32: SHEIN app search, not a guaranteed fixed discount'
-    intro = 'مرجع تفاصيل الرمز: مكان إدخاله، ما ظهر في الفيديو، وشروط القسائم وحدود ما نعرفه.' if ar else 'A reference for the code entry point, observed campaign, coupon conditions and verification limits.'
+    intro = 'تفاصيل رمز بحث شيان: مكان إدخاله، ما ظهر في الفيديو، وشروط القسائم وحدود ما نعرفه.' if ar else 'Code details: the app entry point, observed campaign, coupon conditions and verification limits.'
     content = section('coupons', 'رمز الحملة الأساسي' if ar else 'Featured campaign code', card(lang))
     content += section('conditions', 'قسائم ظهرت في التجربة' if ar else 'Coupons observed in the recording', conditions(lang))
     content += section('how-to-use', 'من البحث إلى مراجعة الخصم' if ar else 'From app search to checking a discount', steps(lang))
     content += section('evidence', 'حدود التحقق' if ar else 'Evidence limits', evidence(lang))
     content += section('guides', 'اقرأ قبل الاستخدام' if ar else 'Read before use', '<p>' + link('shein/how-to-use/', 'طريقة البحث وأسباب عدم ظهور العرض' if ar else 'Usage guide in Arabic') + '</p><p>' + link('shein/new-user-code/', 'شروط قسائم المستخدم الجديد' if ar else 'New-user conditions in Arabic') + '</p>')
     values = faq_values(lang)
-    content += section('faq', 'أسئلة عن S4T32' if ar else 'Questions about S4T32', faq_html(values))
+    content += section('faq', 'أسئلة عن الرمز' if ar else 'Questions about the code', faq_html(values))
     modified.append(page(route, lang, title, intro, heading, intro, content, alternate, faqs=values))
 
-intro = 'ظهرت بعد البحث عن S4T32 قسائم تحمل «مستخدم جديد فقط» و«منتجات مختارة». نوضح ما ظهر دون افتراض أهلية حسابك أو توفر القسائم الآن.'
+intro = 'ظهرت بعد البحث قسائم شي إن للمستخدم الجديد تحمل «مستخدم جديد فقط» و«منتجات مختارة». نوضح ما ظهر دون افتراض أهلية حسابك أو توفر القسائم الآن.'
 content = section('codes', 'البحث عن الحملة', card('ar'))
 content += section('conditions', 'النسب والسقوف والأهلية في الفيديو', conditions('ar'))
 content += section('eligibility', 'هل حسابك مؤهل؟', '<p>الحصول على رسالة استلام لا يثبت أهلية الحساب عند الدفع. اقرأ تعريف المستخدم الجديد وشروط المنتجات داخل حسابك، ولا تعتمد على النسبة وحدها. لا ننصح بإنشاء حسابات للتحايل على شروط SHEIN.</p><p>القسائم المعروضة هنا سجل لما ظهر في فيديو، وليست قائمة عروض مؤكدة الآن. راجع القيمة المؤهلة وسقف الخصم والصلاحية قبل استخدام أي قسيمة.</p>')
@@ -221,19 +235,19 @@ values = [faq_values('ar')[2], faq_values('ar')[4], ('هل يمكن جمع ال�
 content += section('faq', 'أسئلة المستخدم الجديد', faq_html(values))
 modified.append(page('shein/new-user-code/', 'ar', 'قسائم شي إن للمستخدم الجديد عبر S4T32 | الشروط والسقوف', intro, 'قسائم المستخدم الجديد: ما ظهر بعد بحث S4T32', intro, content, faqs=values))
 
-intro = 'في الفيديو، استخدم S4T32 في بحث التطبيق لفتح حملة. هذا يختلف عن إدخال رمز قسيمة عند الدفع؛ نجاح النسخ أو الاستلام وحده لا يثبت الخصم.'
-content = section('how-to-use', 'خطوات S4T32 في التطبيق', steps('ar'))
-content += section('difference', 'رمز البحث ليس قسيمة الدفع', '<p>رمز البحث يفتح صفحة حملة أو عروض. القسيمة التي تحصل عليها من الحملة لها شروطها الخاصة، وقد تستخدم وفق تعليمات حسابك عند الدفع. لا ننقل خصومات المنتجات الظاهرة في الحملة إلى نسبة ثابتة للرمز.</p><p>إذا لم تظهر الحملة، تحقق من كتابة S4T32 والدولة المختارة ونسخة التطبيق وتوفر الحملة. لا نملك دليلًا يحدد سبب فشل تجربة معينة أو بلدًا مضمونًا.</p>')
+intro = 'طريقة استخدام كوبون شي إن تبدأ من بحث التطبيق لفتح حملة. هذا يختلف عن إدخال رمز قسيمة عند الدفع؛ نجاح النسخ أو الاستلام وحده لا يثبت الخصم.'
+content = section('how-to-use', 'خطوات البحث داخل التطبيق', steps('ar'))
+content += section('difference', 'رمز البحث ليس قسيمة الدفع', '<p>رمز البحث يفتح صفحة حملة أو عروض. القسيمة التي تحصل عليها من الحملة لها شروطها الخاصة، وقد تستخدم وفق تعليمات حسابك عند الدفع. لا ننقل خصومات المنتجات الظاهرة في الحملة إلى نسبة ثابتة للرمز.</p><p>إذا لم تظهر الحملة، تحقق من كتابة الرمز والدولة المختارة ونسخة التطبيق وتوفر الحملة. لا نملك دليلًا يحدد سبب فشل تجربة معينة أو بلدًا مضمونًا.</p>')
 content += section('evidence', 'ما يثبته الدليل وما لا يثبته', evidence('ar'))
-content += section('codes', 'الرمز وطريقة نسخه', card('ar', compact=True))
+content += section('codes', 'بطاقة نسخ الرمز', card('ar', compact=True))
 values = [faq_values('ar')[0], faq_values('ar')[4], ('كيف أتأكد من الخصم الحقيقي؟', 'راجع سطر خصم القسيمة وإجمالي الطلب قبل الدفع، وافصل خصم القسيمة عن تخفيضات المنتجات والشحن. لا تحتاج إلى إتمام شراء لمجرد التحقق من المبلغ الظاهر.')]
 content += section('faq', 'أسئلة الاستخدام', faq_html(values))
 modified.append(page('shein/how-to-use/', 'ar', 'طريقة استخدام S4T32 في بحث شي إن | دليل Couponova', intro, 'أين تكتب S4T32 وكيف تتحقق من القسيمة؟', intro, content, faqs=values))
 
 intro = 'نفصل بين فتح حملة، واستلام قسيمة، وتطبيق خصم في السلة، وإتمام شراء. لكل ادعاء مستوى دليل مختلف.'
-content = section('verification', 'مستويات التحقق', '<p><strong>فتح حملة مشاهد:</strong> يظهر إدخال رمز البحث وفتح الحملة في تسجيل. لا يعني خصمًا مؤكدًا في السلة.</p><p><strong>استلام قسيمة مشاهد:</strong> تظهر رسالة الاستلام وشروط القسيمة. لا يثبت ذلك استردادها عند الدفع.</p><p><strong>خصم سلة موثق:</strong> يحتاج ملخصًا يبين مبلغ خصم القسيمة وشروط التجربة. هذا لم يظهر في فيديو S4T32 الحالي.</p><p><strong>غير متحقق:</strong> ما لا تدعمه تجربة أو مصدر واضح لا يوصف بأنه مضمون. لا نضمن التوفر لكل حساب أو بلد.</p>')
+content = section('verification', 'مستويات التحقق', '<p><strong>فتح حملة مشاهد:</strong> يظهر إدخال رمز البحث وفتح الحملة في تسجيل. لا يعني خصمًا مؤكدًا في السلة.</p><p><strong>استلام قسيمة مشاهد:</strong> تظهر رسالة الاستلام وشروط القسيمة. لا يثبت ذلك استردادها عند الدفع.</p><p><strong>خصم سلة موثق:</strong> يحتاج ملخصًا يبين مبلغ خصم القسيمة وشروط التجربة. هذا لم يظهر في التسجيل الحالي.</p><p><strong>غير متحقق:</strong> ما لا تدعمه تجربة أو مصدر واضح لا يوصف بأنه مضمون. لا نضمن التوفر لكل حساب أو بلد.</p>')
 content += section('records', 'ما نسجله؟', '<p>نسجل مصدر الدليل وتاريخ مراجعته، ونفصل ذلك عن تاريخ التصوير والتجربة. نميز بين الدولة الظاهرة في التطبيق والدولة التي يذكرها صاحب التجربة، ولا نضع تاريخًا لم نستطع توثيقه. نسجل النسبة والحد الأدنى وسقف الخصم والمنتجات والصلاحية كما ظهرت، لا كما نتمنى أن تكون.</p>')
-content += section('current', 'الدليل الحالي لـS4T32', evidence('ar') + '<p>القسائم المرصودة بشروطها موضحة في ' + link('shein/new-user-code/', 'صفحة المستخدم الجديد') + '. لا نوصفها بأنها متوفرة الآن دون إعادة تحقق.</p>')
+content += section('current', 'الدليل الحالي للرمز', evidence('ar') + '<p>القسائم المرصودة بشروطها موضحة في ' + link('shein/new-user-code/', 'صفحة المستخدم الجديد') + '. لا نوصفها بأنها متوفرة الآن دون إعادة تحقق.</p>')
 content += section('privacy', 'الخصوصية والتصحيح', '<p>لا ننشر الفيديو الأصلي أو بيانات الحساب والطلب والدفع. يمكن تقديم دليل منقح لمراجعته، ويجب عدم إرسال البيانات الحساسة في بلاغات GitHub العامة.</p><p>نراجع المعلومات عند توفر دليل جديد أو بلاغ، ونصحح الحالة دون تحويل تاريخ تعديل الصفحة إلى تاريخ اختبار. لا نستنتج اعتماد SHEIN أو شراكة أو عمولة من مجرد ظهور الكود.</p><p>' + link('contact/', 'إرسال ملاحظة أو بلاغ') + '</p>')
 modified.append(page('editorial-policy/', 'ar', 'سياسة التحرير والتحقق من الرموز والقسائم | Couponova', intro, 'سياسة التحرير والتحقق', intro, content))
 

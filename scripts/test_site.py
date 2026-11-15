@@ -120,5 +120,17 @@ assert not c['countrySelectionShownInVideo'] and data['primaryMarket'] == 'SA'
 assert not c['checkoutDiscountVerified'] and not c['worldwideAvailabilityVerified']
 assert [(v['discountPercent'], v['minimumSpend'], v['maximumDiscount']) for v in c['observedCoupons']] == [(50,79,40),(40,179,80)]
 assert all(v['minimumSpendOperator'] == '>' and v['expiresAt'] is None and not v['currentlyAvailableVerified'] for v in c['observedCoupons'])
-assert (ROOT / 'googlebfdc6b4f70c32d24.html').exists()
+d = c['dateEvidence']
+assert d['reportedTestDate'] == '2026-11-15' and d['displayedTime'] == '4:51'
+assert d['ownerStatesScreenshotBelongsToVideo']
+assert not d['independentlyLinkedToCouponVideo'] and not d['hasTrustedCaptureMetadata']
+assert not d['amPmShown'] and not d['timeZoneShown'] and not d['gregorianYearExplicitlyShown']
+image = ROOT / d['imagePath']
+assert image.exists() and image.stat().st_size < 100000
+import hashlib
+assert hashlib.sha256(image.read_bytes()).hexdigest() == d['imageSha256']
+for filename in ['google2c23bd2d5c0b31da.html', 'googlebfdc6b4f70c32d24.html', 'googled7bbaa4017a2a308.html']:
+    assert (ROOT / filename).exists(), filename
+for filename in ['google2c23bd2d5c0b31da (8).html', 'google2c23bd2d5c0b31da .html']:
+    assert not (ROOT / filename).exists(), filename
 print('PASS data, reciprocal hreflang, nine sitemap URLs and verification file retained')

@@ -628,3 +628,36 @@ section[id], main[id] {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Owner-supplied date screenshot: complete image, optional and lazy-loaded. */
+.proof-disclosure {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid #555;
+  border-radius: 13px;
+}
+
+.proof-disclosure summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.proof-figure {
+  margin: 18px 0 0;
+}
+
+.proof-figure img {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  margin-inline: auto;
+  border-radius: 12px;
+}
+
+.proof-caption {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+}
