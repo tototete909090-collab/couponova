@@ -4,21 +4,21 @@
 
 ## Public pages
 
-- Arabic home: https://tototete909090-collab.github.io/couponova/
-- S4T32 details: https://tototete909090-collab.github.io/couponova/shein/
-- App search and coupon usage guide: https://tototete909090-collab.github.io/couponova/shein/how-to-use/
-- Observed new-user coupon conditions: https://tototete909090-collab.github.io/couponova/shein/new-user-code/
-- English home: https://tototete909090-collab.github.io/couponova/en/
-- English S4T32 details: https://tototete909090-collab.github.io/couponova/en/shein/
-- About: https://tototete909090-collab.github.io/couponova/about/
-- Editorial and evidence policy: https://tototete909090-collab.github.io/couponova/editorial-policy/
-- Contact: https://tototete909090-collab.github.io/couponova/contact/
+- Arabic home: https://codewafra.com/
+- S4T32 details: https://codewafra.com/shein/
+- App search and coupon usage guide: https://codewafra.com/shein/how-to-use/
+- Observed new-user coupon conditions: https://codewafra.com/shein/new-user-code/
+- English home: https://codewafra.com/en/
+- English S4T32 details: https://codewafra.com/en/shein/
+- About: https://codewafra.com/about/
+- Editorial and evidence policy: https://codewafra.com/editorial-policy/
+- Contact: https://codewafra.com/contact/
 
 ## Evidence and limits
 
 Owner-submitted videos reviewed on 2026-11-15 showed the SHEIN app-search campaign and coupon receipt. The first recording clearly showed s4t32 in app search and WELCOME TO SHEIN. Neither recording established a coupon applied to a cart or a completed purchase. The owner reports Saudi Arabia as the test country; the country selection setting was not explicitly shown. Saudi riyal amounts were visible. Saudi Arabia is the site's current primary audience, not a guarantee that every Saudi account is eligible.
 
-The owner reports the test date as 2026-11-15 and states that the supplied phone-clock screenshot belongs with the video. The screenshot visibly shows Sunday, 15 November and 4:51, plus a Hijri date of 4 Jumada II 1448 AH. A Gregorian year, AM/PM and time zone are not explicitly displayed. This is supporting owner-provided evidence, not an independently verified continuous timestamp for the coupon video. The screenshot does not prove a checkout discount or completed purchase. A lightweight public copy is available at https://tototete909090-collab.github.io/couponova/assets/evidence/clock-2026-11-15.webp.
+The owner reports the test date as 2026-11-15 and states that the supplied phone-clock screenshot belongs with the video. The screenshot visibly shows Sunday, 15 November and 4:51, plus a Hijri date of 4 Jumada II 1448 AH. A Gregorian year, AM/PM and time zone are not explicitly displayed. This is supporting owner-provided evidence, not an independently verified continuous timestamp for the coupon video. The screenshot does not prove a checkout discount or completed purchase. A lightweight public copy is available at https://codewafra.com/assets/evidence/clock-2026-11-15.webp.
 
 Two readable coupons in that recording offered 50% on orders more than SAR 79, capped at SAR 40; and 40% on orders more than SAR 179, capped at SAR 80. Both stated new users only and selected products, with one day remaining at recording. These are observed, time-limited coupons, not guaranteed current offers or a fixed percentage discount from S4T32.
 

@@ -17,4 +17,4 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-Sitemap: https://tototete909090-collab.github.io/couponova/sitemap.xml
+Sitemap: https://codewafra.com/sitemap.xml

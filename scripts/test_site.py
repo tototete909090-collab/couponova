@@ -7,8 +7,8 @@ import json
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = 'https://tototete909090-collab.github.io/couponova/'
-PREFIX = '/couponova/'
+BASE = 'https://codewafra.com/'
+PREFIX = '/'
 GENERATED = ['index.html', 'en/index.html', 'en/shein/index.html', 'shein/index.html', 'shein/how-to-use/index.html', 'shein/new-user-code/index.html', 'editorial-policy/index.html']
 
 class Page(HTMLParser):
@@ -72,6 +72,7 @@ for name in GENERATED:
     assert '```' not in source, name
     assert 'H3RAW' not in source, name
     assert 'couponova.cfd' not in source, name
+    assert '/couponova/' not in source and 'tototete909090-collab.github.io' not in source, name
     assert 'مجرّبة عالميًا' not in source, name
     assert 'verified_working' not in source, name
     p = Page(); p.feed(source)
@@ -105,9 +106,19 @@ for url, p in pages.items():
 
 urls = [loc.text for loc in ET.parse(ROOT / 'sitemap.xml').getroot().findall('{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
 assert len(urls) == 9 and len(set(urls)) == 9
-assert all(file_for_url(url).exists() for url in urls)
+assert all(url.startswith(BASE) and '/couponova/' not in url and file_for_url(url).exists() for url in urls)
+for url in urls:
+    p = Page(); p.feed(file_for_url(url).read_text())
+    assert p.canonical == [url], (url, p.canonical)
+    for target in p.links:
+        u = urlparse(target)
+        if u.scheme in ['data', 'mailto', 'tel'] or target.startswith('#') or (u.netloc and u.netloc != urlparse(BASE).netloc):
+            continue
+        assert '/couponova/' not in target and file_for_url(target).exists(), (url, target)
+assert 'Sitemap: ' + BASE + 'sitemap.xml' in (ROOT / 'robots.txt').read_text()
+assert (ROOT / 'CNAME').read_text().strip() == 'codewafra.com'
 assert set(pages).issubset(urls)
-assert 'https://tototete909090-collab.github.io/couponova/shein/new-user-code/' in urls
+assert 'https://codewafra.com/shein/new-user-code/' in urls
 
 data = json.loads((ROOT / 'data/coupons.json').read_text())
 assert data['primaryCode'] == 'S4T32'

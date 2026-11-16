@@ -6,12 +6,13 @@ import json
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = 'https://tototete909090-collab.github.io/couponova/'
-PATH = '/couponova/'
+BASE = 'https://codewafra.com/'
+PATH = '/'
 DATA = json.loads((ROOT / 'data/coupons.json').read_text(encoding='utf-8'))
 LISTING = next(item for item in DATA['coupons'] if item['code'] == DATA['primaryCode'] and item['published'])
 CODE = escape(LISTING['code'])
 REVIEWED = DATA['lastReviewed']
+PAGE_UPDATED = '2026-11-16'
 DESTINATION = escape(LISTING['destination'], quote=True)
 DATE_EVIDENCE = LISTING.get('dateEvidence', {})
 
@@ -134,7 +135,7 @@ def page(route, lang, title, description, heading, intro, content, alternate=Non
     else:
         nav_markup += f'<a class="language-link" href="{PATH}en/shein/" lang="en">English</a>'
     website = {'@type': 'WebSite', '@id': BASE + '#website', 'name': 'Couponova', 'url': BASE, 'inLanguage': ['ar', 'en']}
-    web_page = {'@type': kind, '@id': url + '#webpage', 'name': title, 'description': description, 'url': url, 'inLanguage': lang, 'dateModified': REVIEWED, 'isPartOf': {'@id': BASE + '#website'}}
+    web_page = {'@type': kind, '@id': url + '#webpage', 'name': title, 'description': description, 'url': url, 'inLanguage': lang, 'dateModified': PAGE_UPDATED, 'isPartOf': {'@id': BASE + '#website'}}
     crumbs = [{'@type': 'ListItem', 'position': 1, 'name': 'الرئيسية' if ar else 'Home', 'item': BASE + home}]
     if route != home:
         crumbs.append({'@type': 'ListItem', 'position': 2, 'name': heading, 'item': url})
@@ -261,7 +262,7 @@ for entry in tree.getroot().findall('s:url', ns):
         lastmod = entry.find('s:lastmod', ns)
         if lastmod is None:
             lastmod = ET.SubElement(entry, '{http://www.sitemaps.org/schemas/sitemap/0.9}lastmod')
-        lastmod.text = REVIEWED
+        lastmod.text = PAGE_UPDATED
 ET.indent(tree, space='  ')
 tree.write(ROOT / 'sitemap.xml', encoding='utf-8', xml_declaration=True)
 with (ROOT / 'sitemap.xml').open('ab') as handle:
