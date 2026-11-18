@@ -1,29 +1,52 @@
-# Couponova
 
-> An independent Arabic and English guide to SHEIN app search code S4T32 and observed coupon conditions. No official SHEIN endorsement is claimed.
+# كود وفرة | Code Wafra
 
-## Public pages
+> كود وفرة (Code Wafra) دليل عربي مستقل لأكواد البحث والقسائم والعروض. يبدأ بتوثيق تجارب SHEIN والرمز S4T32، ويعرض شروط القسائم والأدلة وحدود التحقق بوضوح. الموقع مستقل ولا يدّعي أنه تابع أو معتمد من SHEIN.
 
-- Arabic home: https://codewafra.com/
-- S4T32 details: https://codewafra.com/shein/
-- App search and coupon usage guide: https://codewafra.com/shein/how-to-use/
-- Observed new-user coupon conditions: https://codewafra.com/shein/new-user-code/
-- English home: https://codewafra.com/en/
-- English S4T32 details: https://codewafra.com/en/shein/
-- About: https://codewafra.com/about/
-- Editorial and evidence policy: https://codewafra.com/editorial-policy/
-- Contact: https://codewafra.com/contact/
+## الصفحات الرئيسية
 
-## Evidence and limits
+- [الصفحة الرئيسية العربية](https://codewafra.com/)
+- [دليل رمز SHEIN S4T32](https://codewafra.com/shein/)
+- [طريقة البحث عن الرمز واستخدامه](https://codewafra.com/shein/how-to-use/)
+- [قسائم المستخدم الجديد وشروطها](https://codewafra.com/shein/new-user-code/)
 
-Owner-submitted videos reviewed on 2026-11-15 showed the SHEIN app-search campaign and coupon receipt. The first recording clearly showed s4t32 in app search and WELCOME TO SHEIN. Neither recording established a coupon applied to a cart or a completed purchase. The owner reports Saudi Arabia as the test country; the country selection setting was not explicitly shown. Saudi riyal amounts were visible. Saudi Arabia is the site's current primary audience, not a guarantee that every Saudi account is eligible.
+## صفحات اللغة الإنجليزية
 
-The owner reports the test date as 2026-11-15 and states that the supplied phone-clock screenshot belongs with the video. The screenshot visibly shows Sunday, 15 November and 4:51, plus a Hijri date of 4 Jumada II 1448 AH. A Gregorian year, AM/PM and time zone are not explicitly displayed. This is supporting owner-provided evidence, not an independently verified continuous timestamp for the coupon video. The screenshot does not prove a checkout discount or completed purchase. A lightweight public copy is available at https://codewafra.com/assets/evidence/clock-2026-11-15.webp.
+- [English homepage](https://codewafra.com/en/)
+- [SHEIN S4T32 guide](https://codewafra.com/en/shein/)
 
-Two readable coupons in that recording offered 50% on orders more than SAR 79, capped at SAR 40; and 40% on orders more than SAR 179, capped at SAR 80. Both stated new users only and selected products, with one day remaining at recording. These are observed, time-limited coupons, not guaranteed current offers or a fixed percentage discount from S4T32.
+## معلومات الموقع والسياسات
 
-Worldwide availability and account eligibility are not independently verified. Use S4T32 in the app search bar; check the coupons currently available in your own account and the final order summary before payment. The website's official-store link is a homepage link, not automatic code activation or a campaign deep link.
+- [من نحن](https://codewafra.com/about/)
+- [السياسة التحريرية ومنهج التحقق](https://codewafra.com/editorial-policy/)
+- [اتصل بنا](https://codewafra.com/contact/)
 
-H3RAW is not promoted by Couponova in this version. The original video and private account information are not published.
+## الأدلة والتوثيق
 
-This file is informational only and does not guarantee indexing, rankings or inclusion in AI answers.
+- [فيديو تجربة البحث عن S4T32](https://codewafra.com/53d043b9-7b65-4224-ba64-2fa422df6944.mp4)
+- [فيديو توثيق القسيمة في سلة التسوق](https://codewafra.com/603ae1f3-a0f8-4725-a3ed-4a0015978767.mp4)
+- [لقطة الساعة المقدمة مع توثيق تجربة نوفمبر](https://codewafra.com/assets/evidence/clock-2026-11-15.webp)
+
+## ملخص الدليل وحدود التحقق
+
+- الرمز S4T32 موثق بوصفه رمز بحث داخل تطبيق SHEIN، وليس رمز خصم ثابتًا مضمونًا لكل طلب.
+- أظهرت تجربة 15 نوفمبر 2026 فتح حملة WELCOME TO SHEIN واستلام قسائم بشروط محددة.
+- أظهرت تجربة موثقة لاحقة تطبيق قسيمة في سلة التسوق وخصمًا يصل إلى 80 ريالًا، مع إجمالي طلب قدره 161.22 ريالًا.
+- قسائم SHEIN قد تختلف بحسب الحساب والدولة والمنتجات وشروط الحملة ومدة صلاحيتها.
+- لا تعني النسب أو السقوف التي ظهرت في تجربة واحدة أنها متاحة لجميع المستخدمين أو أنها مستمرة حاليًا.
+- يجب الرجوع إلى شروط القسيمة وملخص الطلب داخل تطبيق SHEIN للتحقق من الخصم المتاح للحساب.
+- يميّز الموقع بين فتح الحملة واستلام القسيمة وظهور الخصم في السلة وإتمام الشراء، ولا يدّعي إتمام شراء ما لم يوجد دليل عليه.
+
+## معلومات عن الاستقلالية
+
+كود وفرة موقع مستقل. لا يمثل SHEIN ولا يدّعي وجود شراكة أو اعتماد رسمي منها. العلامات التجارية وأسماؤها تعود إلى أصحابها.
+
+## معلومات الفهرسة والاستخدام
+
+- [خريطة الموقع XML](https://codewafra.com/sitemap.xml)
+- [ملف تعليمات الزحف](https://codewafra.com/robots.txt)
+- [سياسة التوثيق والتحرير](https://codewafra.com/editorial-policy/)
+
+---
+
+هذا الملف دليل تعريفي يساعد أنظمة البحث والذكاء الاصطناعي على اكتشاف أقسام الموقع وفهم موضوعاتها. ولا يضمن الفهرسة أو الترتيب أو الاقتباس في إجابات أي نموذج.
