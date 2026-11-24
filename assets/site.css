@@ -6,8 +6,11 @@
   --surface-2: #181818;
   --line: #303030;
   --text: #f5f5f5;
-  --muted: #aaaaaa;
+  --muted: #ffffff;
   --white: #ffffff;
+  --gold: #d4af37;
+  --gold-bright: #f0d27a;
+  --gold-deep: #a87f1f;
   --radius: 18px;
   --max-width: 1120px;
 }
@@ -25,8 +28,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 17px;
+  line-height: 1.8;
 }
 
 a {
@@ -84,8 +87,9 @@ input {
   width: 38px;
   height: 38px;
   margin-inline-end: 8px;
-  border: 1px solid #777;
+  border: 1px solid #666;
   border-radius: 11px;
+  color: var(--white);
 }
 
 .nav-links {
@@ -106,6 +110,7 @@ input {
 
 .nav-links a:hover {
   color: var(--white);
+  box-shadow: inset 0 -2px 0 var(--white);
 }
 
 .language-link {
@@ -118,22 +123,22 @@ input {
 }
 
 .hero {
-  padding: 85px 0 65px;
+  padding: 96px 0 76px;
   text-align: center;
   background: radial-gradient(
     ellipse at 50% 0%,
-    #222222 0%,
-    transparent 68%
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(34, 34, 34, 0) 68%
   );
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid var(--line);
 }
 
 .eyebrow {
   display: inline-block;
   padding: 5px 14px;
-  border: 1px solid #555;
+  border: 1px solid #666;
   border-radius: 50px;
-  color: #dddddd;
+  color: var(--white);
   font-size: 13px;
 }
 
@@ -146,14 +151,21 @@ input {
 }
 
 .hero h1 span {
-  color: #aaaaaa;
+  color: var(--white);
+}
+
+.hero-tagline {
+  max-width: 640px;
+  margin: 16px auto 28px;
+  color: var(--white);
+  font-size: 17px;
 }
 
 .hero-description {
   max-width: 720px;
-  margin: 0 auto;
-  color: var(--muted);
-  font-size: 18px;
+  margin: 34px auto 0;
+  color: var(--white);
+  font-size: 19px;
 }
 
 .search-form {
@@ -180,17 +192,17 @@ input {
 .button {
   min-height: 44px;
   padding: 11px 19px;
-  border: 1px solid var(--white);
+  border: 1px solid #666;
   border-radius: 10px;
-  background: var(--white);
-  color: #080808;
+  background: var(--surface-2);
+  color: var(--white);
   font-weight: 750;
   cursor: pointer;
   transition: 0.2s ease;
 }
 
 .button:hover {
-  background: #cccccc;
+  background: #242424;
 }
 
 .button-secondary {
@@ -204,7 +216,7 @@ input {
 }
 
 .section {
-  padding: 55px 0;
+  padding: 66px 0;
 }
 
 .section-heading {
@@ -226,7 +238,7 @@ input {
 }
 
 .small-text {
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .coupon-grid {
@@ -246,7 +258,7 @@ input {
   grid-column: 1 / -1;
   align-self: stretch;
   padding: 30px;
-  border: 1px solid #444;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   background: linear-gradient(145deg, #191919, #101010);
 }
@@ -262,7 +274,7 @@ input {
   padding: 4px 11px;
   border: 1px solid #666;
   border-radius: 50px;
-  color: #dddddd;
+  color: var(--white);
   font-size: 12px;
 }
 
@@ -284,25 +296,38 @@ input {
 .coupon-code-box {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border: 1px dashed #777;
+  gap: 12px;
+  padding: 18px 16px;
+  border: 1px solid #555;
   border-radius: 12px;
   background: #090909;
+}
+
+.coupon-code-box .button {
+  padding: 14px 28px;
+  border: 1px solid var(--white);
+  background: #181818;
+  color: var(--white);
+  font-size: 17px;
+}
+
+.coupon-code-box .button:hover {
+  background: #242424;
 }
 
 .coupon-code {
   flex: 1;
   text-align: center;
   direction: ltr;
-  font-size: 24px;
+  font-size: clamp(52px, 14vw, 88px);
   font-weight: 900;
   letter-spacing: 3px;
+  color: var(--gold-bright);
 }
 
 .coupon-status {
   margin-top: 12px;
-  color: #bbbbbb;
+  color: var(--white);
   font-size: 12px;
 }
 
@@ -312,7 +337,7 @@ input {
   border: 1px solid #555;
   border-radius: 13px;
   background: #141414;
-  color: #cccccc;
+  color: var(--white);
   font-size: 13px;
 }
 
@@ -331,7 +356,7 @@ input {
   border: 1px solid #555;
   border-radius: 13px;
   background: #141414;
-  color: #cccccc;
+  color: var(--white);
   font-size: 13px;
 }
 
@@ -469,7 +494,7 @@ section[id], main[id] {
   content: "0" counter(steps);
   display: block;
   margin-bottom: 12px;
-  color: #aaaaaa;
+  color: var(--white);
   font-size: 13px;
 }
 
